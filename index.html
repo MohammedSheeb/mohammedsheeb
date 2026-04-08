@@ -1,817 +1,827 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammed Sheeb</title>
+‏<!DOCTYPE html>
+‏<html lang="en">
+‏<head>
+‏  <meta charset="UTF-8" />
+‏  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+‏  <title>Mohammed Sheeb</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+‏  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+‏  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg:#000;
-      --card:#111;
-      --border:#222;
-      --text:#fff;
-      --soft:#aaa;
-      --accent:#e50914;
-      --chip:#1a1a1a;
+‏  <style>
+‏    :root{
+‏      --bg:#000;
+‏      --card:#111;
+‏      --border:#222;
+‏      --text:#fff;
+‏      --soft:#aaa;
+‏      --accent:#e50914;
+‏      --chip:#1a1a1a;
 
-      --online:#43b581;
-      --idle:#faa61a;
-      --dnd:#f04747;
-      --offline:#747f8d;
+‏      --online:#43b581;
+‏      --idle:#faa61a;
+‏      --dnd:#f04747;
+‏      --offline:#747f8d;
     }
 
     *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
+‏      margin:0;
+‏      padding:0;
+‏      box-sizing:border-box;
+‏      font-family:'Poppins',sans-serif;
     }
 
-    html{
-      scroll-behavior:smooth;
+‏    html{
+‏      scroll-behavior:smooth;
     }
 
-    body{
-      color:var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(229,9,20,0.15), transparent 30%),
-        linear-gradient(180deg, #050505 0%, #000 60%, #090909 100%);
-      overflow-x:hidden;
+‏    body{
+‏      color:var(--text);
+‏      background:
+‏        radial-gradient(circle at top left, rgba(229,9,20,0.15), transparent 30%),
+‏        linear-gradient(180deg, #050505 0%, #000 60%, #090909 100%);
+‏      overflow-x:hidden;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+‏    a{
+‏      text-decoration:none;
+‏      color:inherit;
     }
 
-    .container{
-      width:min(100%, 1100px);
-      margin:0 auto;
-      padding:0 16px;
+‏    .container{
+‏      width:min(100%, 1100px);
+‏      margin:0 auto;
+‏      padding:0 16px;
     }
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
-      background:rgba(0,0,0,0.72);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      transition:0.3s ease;
+‏    header{
+‏      position:sticky;
+‏      top:0;
+‏      z-index:1000;
+‏      backdrop-filter:blur(14px);
+‏      -webkit-backdrop-filter:blur(14px);
+‏      background:rgba(0,0,0,0.72);
+‏      border-bottom:1px solid rgba(255,255,255,0.06);
+‏      transition:0.3s ease;
     }
 
-    header.scrolled{
-      background:rgba(0,0,0,0.9);
-      border-bottom:1px solid rgba(255,255,255,0.09);
-      box-shadow:0 10px 30px rgba(0,0,0,0.28);
+‏    header.scrolled{
+‏      background:rgba(0,0,0,0.9);
+‏      border-bottom:1px solid rgba(255,255,255,0.09);
+‏      box-shadow:0 10px 30px rgba(0,0,0,0.28);
     }
 
-    .header-inner{
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      position:relative;
+‏    .header-inner{
+‏      min-height:78px;
+‏      display:flex;
+‏      align-items:center;
+‏      justify-content:space-between;
+‏      gap:16px;
+‏      position:relative;
     }
 
-    .logo{
-      font-size:28px;
-      font-weight:800;
-      letter-spacing:0.2px;
-      white-space:nowrap;
-      color:#fff;
+‏    .logo{
+‏      font-size:28px;
+‏      font-weight:800;
+‏      letter-spacing:0.2px;
+‏      white-space:nowrap;
+‏      color:#fff;
     }
 
-    .nav{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
+‏    .nav{
+‏      display:flex;
+‏      align-items:center;
+‏      gap:10px;
+‏      flex-wrap:wrap;
+‏      justify-content:flex-end;
     }
 
-    .nav a{
-      color:#fff;
-      font-size:14px;
-      font-weight:600;
-      padding:10px 14px;
-      border:1px solid transparent;
-      border-radius:12px;
-      transition:0.25s ease;
-      position:relative;
+‏    .nav a{
+‏      color:#fff;
+‏      font-size:14px;
+‏      font-weight:600;
+‏      padding:10px 14px;
+‏      border:1px solid transparent;
+‏      border-radius:12px;
+‏      transition:0.25s ease;
+‏      position:relative;
     }
 
-    .nav a::after{
-      content:"";
-      position:absolute;
-      left:14px;
-      right:14px;
-      bottom:6px;
-      height:2px;
-      background:var(--accent);
-      transform:scaleX(0);
-      transform-origin:center;
-      transition:transform 0.25s ease;
-      border-radius:999px;
+‏    .nav a::after{
+‏      content:"";
+‏      position:absolute;
+‏      left:14px;
+‏      right:14px;
+‏      bottom:6px;
+‏      height:2px;
+‏      background:var(--accent);
+‏      transform:scaleX(0);
+‏      transform-origin:center;
+‏      transition:transform 0.25s ease;
+‏      border-radius:999px;
     }
 
-    .nav a:hover{
-      color:var(--accent);
-      background:rgba(255,255,255,0.03);
+‏    .nav a:hover{
+‏      color:var(--accent);
+‏      background:rgba(255,255,255,0.03);
     }
 
-    .nav a:hover::after{
-      transform:scaleX(1);
+‏    .nav a:hover::after{
+‏      transform:scaleX(1);
     }
 
-    .menu-toggle{
-      display:none;
-      width:46px;
-      height:46px;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.03);
-      border-radius:12px;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      transition:0.25s ease;
+‏    .menu-toggle{
+‏      display:none;
+‏      width:46px;
+‏      height:46px;
+‏      border:1px solid rgba(255,255,255,0.08);
+‏      background:rgba(255,255,255,0.03);
+‏      border-radius:12px;
+‏      align-items:center;
+‏      justify-content:center;
+‏      cursor:pointer;
+‏      transition:0.25s ease;
     }
 
-    .menu-toggle:hover{
-      border-color:rgba(229,9,20,0.4);
+‏    .menu-toggle:hover{
+‏      border-color:rgba(229,9,20,0.4);
     }
 
-    .menu-toggle span{
-      display:block;
-      width:20px;
-      height:2px;
-      background:#fff;
-      margin:3px 0;
-      border-radius:999px;
-      transition:0.25s ease;
+‏    .menu-toggle span{
+‏      display:block;
+‏      width:20px;
+‏      height:2px;
+‏      background:#fff;
+‏      margin:3px 0;
+‏      border-radius:999px;
+‏      transition:0.25s ease;
     }
 
-    .reveal{
-      opacity:0;
-      transform:translateY(22px);
-      animation:fadeUp 0.8s ease forwards;
+‏    .reveal{
+‏      opacity:0;
+‏      transform:translateY(22px);
+‏      animation:fadeUp 0.8s ease forwards;
     }
 
-    .delay-1{ animation-delay:0.08s; }
-    .delay-2{ animation-delay:0.16s; }
-    .delay-3{ animation-delay:0.24s; }
-    .delay-4{ animation-delay:0.32s; }
-    .delay-5{ animation-delay:0.40s; }
+‏    .delay-1{ animation-delay:0.08s; }
+‏    .delay-2{ animation-delay:0.16s; }
+‏    .delay-3{ animation-delay:0.24s; }
+‏    .delay-4{ animation-delay:0.32s; }
+‏    .delay-5{ animation-delay:0.40s; }
 
-    @keyframes fadeUp{
-      to{
-        opacity:1;
-        transform:translateY(0);
+‏    @keyframes fadeUp{
+‏      to{
+‏        opacity:1;
+‏        transform:translateY(0);
       }
     }
 
-    .hero{
-      text-align:center;
-      padding:58px 20px 22px;
+‏    .hero{
+‏      text-align:center;
+‏      padding:58px 20px 22px;
     }
 
-    .hero img{
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      border:3px solid var(--accent);
-      margin:0 auto 16px;
-      object-fit:cover;
-      display:block;
-      box-shadow:0 0 24px rgba(229,9,20,0.18);
+‏    .hero img{
+‏      width:120px;
+‏      height:120px;
+‏      border-radius:50%;
+‏      border:3px solid var(--accent);
+‏      margin:0 auto 16px;
+‏      object-fit:cover;
+‏      display:block;
+‏      box-shadow:0 0 24px rgba(229,9,20,0.18);
     }
 
-    .hero h1{
-      font-size:40px;
-      line-height:1.12;
-      font-weight:800;
-      white-space:nowrap;
+‏    .hero h1{
+‏      font-size:40px;
+‏      line-height:1.12;
+‏      font-weight:800;
+‏      white-space:nowrap;
     }
 
-    .hero h1 span{
-      color:var(--accent);
+‏    .hero h1 span{
+‏      color:var(--accent);
     }
 
-    .hero-line{
-      width:120px;
-      height:3px;
-      background:var(--accent);
-      margin:18px auto 0;
-      border-radius:999px;
-      box-shadow:0 0 14px rgba(229,9,20,0.28);
+‏    .hero-line{
+‏      width:120px;
+‏      height:3px;
+‏      background:var(--accent);
+‏      margin:18px auto 0;
+‏      border-radius:999px;
+‏      box-shadow:0 0 14px rgba(229,9,20,0.28);
     }
 
-    .section-heading{
-      text-align:center;
-      margin-top:28px;
+‏    .section-heading{
+‏      text-align:center;
+‏      margin-top:28px;
     }
 
-    .section-heading h2{
-      font-size:40px;
-      font-weight:800;
-      line-height:1.12;
-      white-space:nowrap;
+‏    .section-heading h2{
+‏      font-size:40px;
+‏      font-weight:800;
+‏      line-height:1.12;
+‏      white-space:nowrap;
     }
 
-    .section-heading h2 span{
-      color:var(--accent);
+‏    .section-heading h2 span{
+‏      color:var(--accent);
     }
 
-    .section-divider{
-      width:140px;
-      height:3px;
-      background:var(--accent);
-      margin:34px auto;
-      border-radius:999px;
-      box-shadow:0 0 14px rgba(229,9,20,0.28);
+‏    .section-divider{
+‏      width:140px;
+‏      height:3px;
+‏      background:var(--accent);
+‏      margin:34px auto;
+‏      border-radius:999px;
+‏      box-shadow:0 0 14px rgba(229,9,20,0.28);
     }
 
-    .about-card{
-      max-width:760px;
-      margin:22px auto 0;
-      background:rgba(17,17,17,0.92);
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:28px;
-      box-shadow:0 16px 36px rgba(0,0,0,0.25);
-      text-align:left;
+‏    .about-card{
+‏      max-width:760px;
+‏      margin:22px auto 0;
+‏      background:rgba(17,17,17,0.92);
+‏      border:1px solid var(--border);
+‏      border-radius:24px;
+‏      padding:28px;
+‏      box-shadow:0 16px 36px rgba(0,0,0,0.25);
+‏      text-align:left;
     }
 
-    .about-card-header{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:16px;
-      color:#fff;
-      font-weight:700;
-      font-size:20px;
+‏    .about-card-header{
+‏      display:flex;
+‏      align-items:center;
+‏      gap:10px;
+‏      margin-bottom:16px;
+‏      color:#fff;
+‏      font-weight:700;
+‏      font-size:20px;
     }
 
-    .about-card-header i{
-      color:var(--accent);
-      font-size:18px;
+‏    .about-card-header i{
+‏      color:var(--accent);
+‏      font-size:18px;
     }
 
-    .about-subtitle{
-      color:#d7d7d7;
-      font-size:20px;
-      font-weight:600;
-      margin-bottom:10px;
+‏    .about-subtitle{
+‏      color:#d7d7d7;
+‏      font-size:20px;
+‏      font-weight:600;
+‏      margin-bottom:10px;
     }
 
-    .about-text{
-      color:var(--soft);
-      font-size:15.5px;
-      line-height:1.9;
-      max-width:100%;
+‏    .about-text{
+‏      color:var(--soft);
+‏      font-size:15.5px;
+‏      line-height:1.9;
+‏      max-width:100%;
     }
 
-    .discord-title{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      max-width:760px;
-      margin:22px auto 10px;
-      font-weight:700;
-      padding:0 4px;
-      font-size:20px;
-      color:#fff;
+‏    .discord-title{
+‏      display:flex;
+‏      align-items:center;
+‏      gap:10px;
+‏      max-width:760px;
+‏      margin:22px auto 10px;
+‏      font-weight:700;
+‏      padding:0 4px;
+‏      font-size:20px;
+‏      color:#fff;
     }
 
-    .discord-title i{
-      color:#5865f2;
+‏    .discord-title i{
+‏      color:#5865f2;
     }
 
-    .discord-card{
-      max-width:760px;
-      margin:10px auto 0;
-      background:rgba(17,17,17,0.92);
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:25px;
-      box-shadow:0 16px 36px rgba(0,0,0,0.25);
+‏    .discord-card{
+‏      max-width:760px;
+‏      margin:10px auto 0;
+‏      background:rgba(17,17,17,0.92);
+‏      border:1px solid var(--border);
+‏      border-radius:24px;
+‏      padding:25px;
+‏      box-shadow:0 16px 36px rgba(0,0,0,0.25);
     }
 
-    .profile{
-      display:flex;
-      align-items:center;
-      gap:16px;
+‏    .profile{
+‏      display:flex;
+‏      align-items:center;
+‏      gap:16px;
     }
 
-    .avatar{
-      width:85px;
-      height:85px;
-      border-radius:50%;
-      position:relative;
-      flex-shrink:0;
+‏    .avatar{
+‏      width:85px;
+‏      height:85px;
+‏      border-radius:50%;
+‏      position:relative;
+‏      flex-shrink:0;
     }
 
-    .avatar img{
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      object-fit:cover;
-      display:block;
+‏    .avatar img{
+‏      width:100%;
+‏      height:100%;
+‏      border-radius:50%;
+‏      object-fit:cover;
+‏      display:block;
     }
 
-    .status-dot{
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      position:absolute;
-      bottom:5px;
-      right:5px;
-      border:3px solid var(--card);
+‏    .status-dot{
+‏      width:18px;
+‏      height:18px;
+‏      border-radius:50%;
+‏      position:absolute;
+‏      bottom:5px;
+‏      right:5px;
+‏      border:3px solid var(--card);
     }
 
-    .mini-dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      flex-shrink:0;
+‏    .mini-dot{
+‏      width:8px;
+‏      height:8px;
+‏      border-radius:50%;
+‏      flex-shrink:0;
     }
 
-    .online{background:var(--online);}
-    .idle{background:var(--idle);}
-    .dnd{background:var(--dnd);}
-    .offline{background:var(--offline);}
+‏    .online{background:var(--online);}
+‏    .idle{background:var(--idle);}
+‏    .dnd{background:var(--dnd);}
+‏    .offline{background:var(--offline);}
 
-    .display-name{
-      font-size:24px;
-      font-weight:700;
-      line-height:1.2;
-      word-break:break-word;
+‏    .display-name{
+‏      font-size:24px;
+‏      font-weight:700;
+‏      line-height:1.2;
+‏      word-break:break-word;
     }
 
-    .chips{
-      margin-top:10px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
+‏    .chips{
+‏      margin-top:10px;
+‏      display:flex;
+‏      gap:10px;
+‏      flex-wrap:wrap;
     }
 
-    .chip{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border-radius:14px;
-      background:var(--chip);
-      border:1px solid var(--border);
-      color:#ccc;
-      min-height:44px;
-      font-size:14px;
+‏    .chip{
+‏      display:flex;
+‏      align-items:center;
+‏      gap:8px;
+‏      padding:8px 14px;
+‏      border-radius:14px;
+‏      background:var(--chip);
+‏      border:1px solid var(--border);
+‏      color:#ccc;
+‏      min-height:44px;
+‏      font-size:14px;
     }
 
-    .social{
-      text-align:center;
-      margin-bottom:50px;
+‏    .social{
+‏      text-align:center;
+‏      margin-bottom:50px;
     }
 
-    .social h2{
-      font-size:22px;
-      margin-bottom:15px;
-      line-height:1.2;
+‏    .social h2{
+‏      font-size:22px;
+‏      margin-bottom:15px;
+‏      line-height:1.2;
     }
 
-    .social h2 span{
-      color:var(--accent);
+‏    .social h2 span{
+‏      color:var(--accent);
     }
 
-    .icons-wrap{
-      max-width:760px;
-      margin:0 auto;
-      padding:4px 10px 6px;
-      overflow:hidden;
+‏    .icons-wrap{
+‏      max-width:760px;
+‏      margin:0 auto;
+‏      padding:4px 10px 6px;
+‏      overflow:hidden;
     }
 
-    .icons{
-      display:grid;
-      grid-template-columns:repeat(7, minmax(0, 1fr));
-      gap:10px;
-      width:100%;
-      align-items:center;
+‏    .icons{
+‏      display:grid;
+‏      grid-template-columns:repeat(7, minmax(0, 1fr));
+‏      gap:10px;
+‏      width:100%;
+‏      align-items:center;
     }
 
-    .icons a{
-      width:100%;
-      aspect-ratio:1 / 1;
-      min-width:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(17,17,17,0.92);
-      border:1px solid var(--border);
-      border-radius:14px;
-      color:var(--accent);
-      font-size:22px;
-      transition:0.25s ease;
+‏    .icons a{
+‏      width:100%;
+‏      aspect-ratio:1 / 1;
+‏      min-width:0;
+‏      display:flex;
+‏      align-items:center;
+‏      justify-content:center;
+‏      background:rgba(17,17,17,0.92);
+‏      border:1px solid var(--border);
+‏      border-radius:14px;
+‏      color:var(--accent);
+‏      font-size:22px;
+‏      transition:0.25s ease;
     }
 
-    .icons a:hover{
-      transform:translateY(-5px);
-      background:var(--accent);
-      color:#fff;
-      box-shadow:0 0 20px rgba(229,9,20,0.16);
+‏    .icons a:hover{
+‏      transform:translateY(-5px);
+‏      background:var(--accent);
+‏      color:#fff;
+‏      box-shadow:0 0 20px rgba(229,9,20,0.16);
     }
 
-    footer{
-      text-align:center;
-      padding:25px 16px;
-      color:#aaa;
-      border-top:1px solid var(--border);
-      margin-top:60px;
-      background:rgba(0,0,0,0.28);
-      font-size:15px;
-      line-height:1.4;
+‏    footer{
+‏      text-align:center;
+‏      padding:25px 16px;
+‏      color:#aaa;
+‏      border-top:1px solid var(--border);
+‏      margin-top:60px;
+‏      background:rgba(0,0,0,0.28);
+‏      font-size:15px;
+‏      line-height:1.4;
     }
 
-    @media (max-width: 768px){
-      .header-inner{
-        min-height:70px;
+‏    @media (max-width: 768px){
+‏      .header-inner{
+‏        min-height:70px;
       }
 
-      .logo{
-        font-size:24px;
+‏      .logo{
+‏        font-size:24px;
       }
 
-      .menu-toggle{
-        display:flex;
-        flex-direction:column;
+‏      .menu-toggle{
+‏        display:flex;
+‏        flex-direction:column;
       }
 
-      .nav{
-        position:absolute;
-        top:100%;
-        left:0;
-        right:0;
-        background:rgba(0,0,0,0.95);
-        backdrop-filter:blur(12px);
-        -webkit-backdrop-filter:blur(12px);
-        border-bottom:1px solid rgba(255,255,255,0.08);
-        padding:10px 16px 14px;
-        display:none;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:6px;
+‏      .nav{
+‏        position:absolute;
+‏        top:100%;
+‏        left:0;
+‏        right:0;
+‏        background:rgba(0,0,0,0.95);
+‏        backdrop-filter:blur(12px);
+‏        -webkit-backdrop-filter:blur(12px);
+‏        border-bottom:1px solid rgba(255,255,255,0.08);
+‏        padding:10px 16px 14px;
+‏        display:none;
+‏        flex-direction:column;
+‏        align-items:flex-start;
+‏        gap:6px;
       }
 
-      .nav.open{
-        display:flex;
+‏      .nav.open{
+‏        display:flex;
       }
 
-      .nav a{
-        width:100%;
-        padding:12px 10px;
-        border-radius:10px;
+‏      .nav a{
+‏        width:100%;
+‏        padding:12px 10px;
+‏        border-radius:10px;
       }
 
-      .nav a::after{
-        left:10px;
-        right:auto;
-        width:80px;
+‏      .nav a::after{
+‏        left:10px;
+‏        right:auto;
+‏        width:80px;
       }
 
-      .hero{
-        padding:48px 18px 20px;
+‏      .hero{
+‏        padding:48px 18px 20px;
       }
 
-      .hero img{
-        width:108px;
-        height:108px;
+‏      .hero img{
+‏        width:108px;
+‏        height:108px;
       }
 
-      .hero h1{
-        font-size:30px;
+‏      .hero h1{
+‏        font-size:30px;
       }
 
-      .section-heading h2{
-        font-size:30px;
+‏      .section-heading h2{
+‏        font-size:30px;
       }
 
-      .about-card,
-      .discord-card{
-        padding:22px;
+‏      .about-card,
+‏      .discord-card{
+‏        padding:22px;
       }
 
-      .about-subtitle,
-      .discord-title{
-        font-size:18px;
+‏      .about-subtitle,
+‏      .discord-title{
+‏        font-size:18px;
       }
 
-      .display-name{
-        font-size:22px;
+‏      .display-name{
+‏        font-size:22px;
       }
 
-      .icons{
-        gap:9px;
+‏      .icons{
+‏        gap:9px;
       }
 
-      .icons a{
-        font-size:20px;
-      }
-    }
-
-    @media (max-width: 480px){
-      .logo{
-        font-size:21px;
-      }
-
-      .hero{
-        padding:40px 14px 16px;
-      }
-
-      .hero img{
-        width:96px;
-        height:96px;
-        margin-bottom:12px;
-      }
-
-      .hero h1{
-        font-size:24px;
-      }
-
-      .hero-line{
-        width:92px;
-      }
-
-      .section-heading{
-        margin-top:22px;
-      }
-
-      .section-heading h2{
-        font-size:24px;
-      }
-
-      .about-card{
-        padding:18px;
-        border-radius:18px;
-      }
-
-      .about-card-header{
-        font-size:18px;
-      }
-
-      .about-subtitle{
-        font-size:17px;
-      }
-
-      .about-text{
-        font-size:14px;
-        line-height:1.8;
-      }
-
-      .discord-title{
-        font-size:16px;
-        padding:0 2px;
-      }
-
-      .discord-card{
-        padding:18px;
-        border-radius:18px;
-      }
-
-      .profile{
-        align-items:flex-start;
-        gap:12px;
-      }
-
-      .avatar{
-        width:72px;
-        height:72px;
-      }
-
-      .status-dot{
-        width:16px;
-        height:16px;
-      }
-
-      .display-name{
-        font-size:20px;
-      }
-
-      .chips{
-        gap:8px;
-      }
-
-      .chip{
-        font-size:13px;
-        padding:7px 12px;
-      }
-
-      .section-divider{
-        width:100px;
-        margin:28px auto;
-      }
-
-      .social h2{
-        font-size:20px;
-      }
-
-      .icons-wrap{
-        padding:4px 8px 6px;
-      }
-
-      .icons{
-        gap:6px;
-      }
-
-      .icons a{
-        border-radius:12px;
-        font-size:18px;
-      }
-
-      footer{
-        padding:22px 12px;
-        margin-top:45px;
+‏      .icons a{
+‏        font-size:20px;
       }
     }
 
-    @media (max-width: 360px){
-      .icons-wrap{
-        padding:4px 6px 6px;
+‏    @media (max-width: 480px){
+‏      .logo{
+‏        font-size:21px;
       }
 
-      .icons{
-        gap:5px;
+‏      .hero{
+‏        padding:40px 14px 16px;
       }
 
-      .icons a{
-        font-size:16px;
+‏      .hero img{
+‏        width:96px;
+‏        height:96px;
+‏        margin-bottom:12px;
       }
-    }
-  </style>
-</head>
 
-<body>
+‏      .hero h1{
+‏        font-size:24px;
+      }
 
-  <header id="siteHeader">
-    <div class="container header-inner">
-      <div class="logo">
-  <img src="logo.png" alt="Logo" style="height:80px;">
-</div>
+‏      .hero-line{
+‏        width:92px;
+      }
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+‏      .section-heading{
+‏        margin-top:22px;
+      }
 
-      <nav class="nav" id="siteNav">
-        <a href="#about">About Me</a>
-        <a href="#social">Social Media</a>
-      </nav>
-    </div>
-  </header>
+‏      .section-heading h2{
+‏        font-size:24px;
+      }
 
-  <section class="hero reveal delay-1" id="about">
-    <img id="heroAvatar" src="profile.jpg" alt="Profile">
-    <h1>Mohammed <span>Sheeb</span></h1>
-    <div class="hero-line"></div>
-  </section>
+‏      .about-card{
+‏        padding:18px;
+‏        border-radius:18px;
+      }
 
-  <div class="section-heading reveal delay-2">
-    <h2>About <span>Me</span></h2>
-  </div>
+‏      .about-card-header{
+‏        font-size:18px;
+      }
 
-  <div class="container">
-    <section class="about-card reveal delay-3">
-      <div class="about-card-header">
-        <i class="fas fa-user"></i>
-        <span>About Me</span>
-      </div>
+‏      .about-subtitle{
+‏        font-size:17px;
+      }
 
-      <div class="about-subtitle">Interests</div>
+‏      .about-text{
+‏        font-size:14px;
+‏        line-height:1.8;
+      }
 
-      <p class="about-text">
-        Passionate about technology, gaming, and building creative digital experiences.
-        I enjoy working on personal projects, improving my skills, and connecting with others online.
-      </p>
-    </section>
+‏      .discord-title{
+‏        font-size:16px;
+‏        padding:0 2px;
+      }
 
-    <div class="discord-title reveal delay-4">
-      <i class="fab fa-discord"></i>
-      <span>Discord</span>
-    </div>
+‏      .discord-card{
+‏        padding:18px;
+‏        border-radius:18px;
+      }
 
-    <section class="discord-card reveal delay-4">
-      <div class="profile">
-        <div class="avatar">
-          <img id="avatar" src="" alt="Discord avatar">
-          <div id="dot" class="status-dot offline"></div>
-        </div>
+‏      .profile{
+‏        align-items:flex-start;
+‏        gap:12px;
+      }
 
-        <div>
-          <div id="displayName" class="display-name">Loading...</div>
+‏      .avatar{
+‏        width:72px;
+‏        height:72px;
+      }
 
-          <div class="chips">
-            <div class="chip">
-              <span id="tag">@username</span>
-            </div>
+‏      .status-dot{
+‏        width:16px;
+‏        height:16px;
+      }
 
-            <div class="chip">
-              <span id="statusMiniDot" class="mini-dot offline"></span>
-              <span id="statusText">Offline</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+‏      .display-name{
+‏        font-size:20px;
+      }
 
-  <div class="section-divider reveal delay-5"></div>
+‏      .chips{
+‏        gap:8px;
+      }
 
-  <section class="social reveal delay-5" id="social">
-    <h2>Social <span>Media</span></h2>
+‏      .chip{
+‏        font-size:13px;
+‏        padding:7px 12px;
+      }
 
-    <div class="icons-wrap">
-      <div class="icons">
-        <a href="mailto:moammedsheeb1@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://discord.gg/ppbMFFxSFF" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-        <a href="https://facebook.com/MohammedSheeb" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/mohammedsheeb" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/@mohammedsheeb" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.tiktok.com/@mohammedsheeb" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://x.com/mohammedsheeb" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-      </div>
-    </div>
-  </section>
+‏      .section-divider{
+‏        width:100px;
+‏        margin:28px auto;
+      }
 
-  <footer>
-    <p>&copy; 2026 Mohammed Sheeb</p>
-  </footer>
+‏      .social h2{
+‏        font-size:20px;
+      }
 
-  <script>
-    const userId = "1481454957512101950";
+‏      .icons-wrap{
+‏        padding:4px 8px 6px;
+      }
 
-    async function loadDiscord(){
-      try{
-        const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-        const data = await res.json();
+‏      .icons{
+‏        gap:6px;
+      }
 
-        const user = data.data.discord_user;
-        const status = data.data.discord_status;
+‏      .icons a{
+‏        border-radius:12px;
+‏        font-size:18px;
+      }
 
-        const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
-
-        document.getElementById("avatar").src = avatarUrl;
-
-        const name = user.global_name ? user.global_name : user.username;
-        document.getElementById("displayName").innerText = name;
-
-        document.getElementById("tag").innerText = "@" + user.username;
-
-        document.getElementById("dot").className = "status-dot " + status;
-        document.getElementById("statusMiniDot").className = "mini-dot " + status;
-
-        document.getElementById("statusText").innerText =
-          status === "online" ? "Online" :
-          status === "idle" ? "Idle" :
-          status === "dnd" ? "Do Not Disturb" : "Offline";
-      } catch(e){
-        console.error("Failed to load Discord data");
+‏      footer{
+‏        padding:22px 12px;
+‏        margin-top:45px;
       }
     }
 
-    const header = document.getElementById("siteHeader");
-    window.addEventListener("scroll", () => {
-      if(window.scrollY > 8){
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
+‏    @media (max-width: 360px){
+‏      .icons-wrap{
+‏        padding:4px 6px 6px;
+      }
+
+‏      .icons{
+‏        gap:5px;
+      }
+
+‏      .icons a{
+‏        font-size:16px;
+      }
+    }
+‏    .avatar-frame{
+‏  position:absolute;
+‏  top:0;
+‏  left:0;
+‏  width:100%;
+‏  height:100%;
+‏  object-fit: cover;
+‏  pointer-events:none;
+}
+‏  </style>
+‏</head>
+
+‏<body>
+
+‏  <header id="siteHeader">
+‏    <div class="container header-inner">
+‏      <div class="logo">
+‏  <img src="logo.png" alt="Logo" style="height:80px;">
+‏</div>
+
+‏      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav">
+‏        <span></span>
+‏        <span></span>
+‏        <span></span>
+‏      </button>
+
+‏      <nav class="nav" id="siteNav">
+‏        <a href="#about">About Me</a>
+‏        <a href="#social">Social Media</a>
+‏      </nav>
+‏    </div>
+‏  </header>
+
+‏  <section class="hero reveal delay-1" id="about">
+‏    <img id="heroAvatar" src="profile.jpg" alt="Profile">
+‏    <h1>Mohammed <span>Sheeb</span></h1>
+‏    <div class="hero-line"></div>
+‏  </section>
+
+‏  <div class="section-heading reveal delay-2">
+‏    <h2>About <span>Me</span></h2>
+‏  </div>
+
+‏  <div class="container">
+‏    <section class="about-card reveal delay-3">
+‏      <div class="about-card-header">
+‏        <i class="fas fa-user"></i>
+‏        <span>About Me</span>
+‏      </div>
+
+‏      <div class="about-subtitle">Interests</div>
+
+‏      <p class="about-text">
+‏        Passionate about technology, gaming, and building creative digital experiences.
+‏        I enjoy working on personal projects, improving my skills, and connecting with others online.
+‏      </p>
+‏    </section>
+
+‏    <div class="discord-title reveal delay-4">
+‏      <i class="fab fa-discord"></i>
+‏      <span>Discord</span>
+‏    </div>
+
+‏    <section class="discord-card reveal delay-4">
+‏      <div class="profile">
+‏        <div class="avatar">
+‏  <img id="avatar" src="" alt="Discord avatar">
+‏  <img src="frame.png" class="frame">
+‏ <div id="dot" class="status-dot offline"></div>
+‏</div>
+
+‏        <div>
+‏          <div id="displayName" class="display-name">Loading...</div>
+
+‏          <div class="chips">
+‏            <div class="chip">
+‏              <span id="tag">@username</span>
+‏            </div>
+
+‏            <div class="chip">
+‏              <span id="statusMiniDot" class="mini-dot offline"></span>
+‏              <span id="statusText">Offline</span>
+‏            </div>
+‏          </div>
+‏        </div>
+‏      </div>
+‏    </section>
+‏  </div>
+
+‏  <div class="section-divider reveal delay-5"></div>
+
+‏  <section class="social reveal delay-5" id="social">
+‏    <h2>Social <span>Media</span></h2>
+
+‏    <div class="icons-wrap">
+‏      <div class="icons">
+‏        <a href="mailto:moammedsheeb1@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+‏        <a href="https://discord.gg/ppbMFFxSFF" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+‏        <a href="https://facebook.com/MohammedSheeb" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+‏        <a href="https://www.instagram.com/mohammedsheeb" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+‏        <a href="https://youtube.com/@mohammedsheeb" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+‏        <a href="https://www.tiktok.com/@mohammedsheeb" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+‏        <a href="https://x.com/mohammedsheeb" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+‏      </div>
+‏    </div>
+‏  </section>
+
+‏  <footer>
+‏    <p>&copy; 2026 Mohammed Sheeb</p>
+‏  </footer>
+
+‏  <script>
+‏    const userId = "1481454957512101950";
+
+‏    async function loadDiscord(){
+‏      try{
+‏        const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+‏        const data = await res.json();
+
+‏        const user = data.data.discord_user;
+‏        const status = data.data.discord_status;
+
+‏        const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+
+‏        document.getElementById("avatar").src = avatarUrl;
+
+‏        const name = user.global_name ? user.global_name : user.username;
+‏        document.getElementById("displayName").innerText = name;
+
+‏        document.getElementById("tag").innerText = "@" + user.username;
+
+‏        document.getElementById("dot").className = "status-dot " + status;
+‏        document.getElementById("statusMiniDot").className = "mini-dot " + status;
+
+‏        document.getElementById("statusText").innerText =
+‏          status === "online" ? "Online" :
+‏          status === "idle" ? "Idle" :
+‏          status === "dnd" ? "Do Not Disturb" : "Offline";
+‏      } catch(e){
+‏        console.error("Failed to load Discord data");
+      }
+    }
+
+‏    const header = document.getElementById("siteHeader");
+‏    window.addEventListener("scroll", () => {
+‏      if(window.scrollY > 8){
+‏        header.classList.add("scrolled");
+‏      } else {
+‏        header.classList.remove("scrolled");
       }
     });
 
-    const menuToggle = document.getElementById("menuToggle");
-    const siteNav = document.getElementById("siteNav");
+‏    const menuToggle = document.getElementById("menuToggle");
+‏    const siteNav = document.getElementById("siteNav");
 
-    menuToggle.addEventListener("click", () => {
-      siteNav.classList.toggle("open");
-      const expanded = siteNav.classList.contains("open");
-      menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+‏    menuToggle.addEventListener("click", () => {
+‏      siteNav.classList.toggle("open");
+‏      const expanded = siteNav.classList.contains("open");
+‏      menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
     });
 
-    siteNav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        siteNav.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
+‏    siteNav.querySelectorAll("a").forEach(link => {
+‏      link.addEventListener("click", () => {
+‏        siteNav.classList.remove("open");
+‏        menuToggle.setAttribute("aria-expanded", "false");
       });
     });
 
-    loadDiscord();
-    setInterval(loadDiscord, 30000);
-  </script>
+‏    loadDiscord();
+‏    setInterval(loadDiscord, 30000);
+‏  </script>
 
-</body>
-</html>
+‏</body>
+‏</html>
