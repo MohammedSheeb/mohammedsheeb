@@ -419,6 +419,7 @@ header.scrolled{
     border-color 0.28s ease;
   position:relative;
   overflow:hidden;
+  outline:none;
 }
 
 .icons a i{
@@ -449,8 +450,18 @@ header.scrolled{
 }
 
 .icons a:focus,
-.icons a:active{
+.icons a:focus-visible{
+  background:rgba(17,17,17,0.92);
+  color:var(--accent);
+  border-color:rgba(255,255,255,0.08);
+  box-shadow:none;
+  transform:none;
   outline:none;
+}
+
+.icons a:focus i,
+.icons a:focus-visible i{
+  transform:none;
 }
 
 footer{
