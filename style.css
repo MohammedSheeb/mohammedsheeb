@@ -747,3 +747,15 @@ footer{
   color:#fff;
   font-size:16px;
 }
+
+.game-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
+  margin-top:10px;
+}
+
+.game-logo{
+  height:20px;
+}
