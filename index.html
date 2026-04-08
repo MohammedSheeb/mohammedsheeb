@@ -56,9 +56,9 @@
       </p>
     </section>
 
-   <div class="discord-title">
-  <img src="discord-logo.png" alt="Discord" class="discord-logo">
-</div>
+    <div class="discord-title">
+      <img src="discord-logo.png" alt="Discord" class="discord-logo">
+    </div>
 
     <section class="discord-card reveal delay-4">
       <div class="profile">
@@ -166,6 +166,18 @@
 
     loadDiscord();
     setInterval(loadDiscord, 30000);
+  </script>
+
+  <script>
+    document.querySelectorAll('.icons a').forEach(link => {
+      link.addEventListener('click', function () {
+        this.blur();
+      });
+    });
+
+    window.addEventListener('pageshow', () => {
+      document.querySelectorAll('.icons a').forEach(link => link.blur());
+    });
   </script>
 
 </body>
