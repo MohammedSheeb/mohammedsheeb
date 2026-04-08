@@ -760,26 +760,26 @@ footer{
   height:17px;
 }
 
-/* يخلي الرابط ما يغير الشكل */
+/* يخلي الرابط ما يغير الشكل *//* الرابط */
 .discord-link{
   text-decoration:none;
   color:inherit;
   display:block;
 }
 
-/* تأثير */
+/* الكرت */
 .discord-card{
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor:pointer;
 }
 
-/* Hover */
+/* hover */
 .discord-card:hover{
-  transform: scale(1.03);
+  transform: scale(1.04);
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
 
-/* ضغط */
+/* 🔥 الضغط (تكبير) */
 .discord-card:active{
-  transform: scale(0.97);
+  transform: scale(1.08);
 }
