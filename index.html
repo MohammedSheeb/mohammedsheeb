@@ -1,4 +1,4 @@
-‏<!DOCTYPE html><!DOCTYPE html>
+‏<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -315,7 +315,6 @@
       border-radius:50%;
       position:relative;
       flex-shrink:0;
-      overflow:hidden;
     }
 
     .avatar img{
@@ -326,22 +325,6 @@
       display:block;
     }
 
-    #avatar{
-      position:relative;
-      z-index:1;
-    }
-
-    .frame{
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      pointer-events:none;
-      z-index:2;
-    }
-
     .status-dot{
       width:18px;
       height:18px;
@@ -350,7 +333,6 @@
       bottom:5px;
       right:5px;
       border:3px solid var(--card);
-      z-index:3;
     }
 
     .mini-dot{
@@ -676,9 +658,7 @@
 
   <header id="siteHeader">
     <div class="container header-inner">
-      <div class="logo">
-        <img src="logo.png" alt="Logo" style="height:80px;">
-      </div>
+      <div class="logo">Mohammed Sheeb</div>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav">
         <span></span>
@@ -694,7 +674,7 @@
   </header>
 
   <section class="hero reveal delay-1" id="about">
-    <img id="heroAvatar" src="profile.jpg" alt="Profile">
+    <img id="heroAvatar" src="" alt="Profile">
     <h1>Mohammed <span>Sheeb</span></h1>
     <div class="hero-line"></div>
   </section>
@@ -727,7 +707,6 @@
       <div class="profile">
         <div class="avatar">
           <img id="avatar" src="" alt="Discord avatar">
-          <img src="discord-frame.png" class="frame" alt="Discord frame">
           <div id="dot" class="status-dot offline"></div>
         </div>
 
@@ -785,6 +764,7 @@
         const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
 
         document.getElementById("avatar").src = avatarUrl;
+        document.getElementById("heroAvatar").src = avatarUrl;
 
         const name = user.global_name ? user.global_name : user.username;
         document.getElementById("displayName").innerText = name;
