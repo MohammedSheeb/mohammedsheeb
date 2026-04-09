@@ -230,6 +230,22 @@
     loadDiscord();
     setInterval(loadDiscord, 30000);
   </script>
+  
+  <script>
+  document.addEventListener("contextmenu", function(e) {
+    if (e.target.tagName === "IMG") {
+      e.preventDefault();
+    }
+  });
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("dragstart", e => e.preventDefault());
+    img.addEventListener("touchstart", e => e.preventDefault(), { passive: false });
+    img.addEventListener("mousedown", e => {
+      if (e.button === 2) e.preventDefault();
+    });
+  });
+</script>
 
 </body>
 </html>
