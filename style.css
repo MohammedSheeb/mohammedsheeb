@@ -575,6 +575,7 @@ header.scrolled{
   position:relative;
   overflow:hidden;
   outline:none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .icons a i{
@@ -605,7 +606,8 @@ header.scrolled{
 }
 
 .icons a:focus,
-.icons a:focus-visible{
+.icons a:focus-visible,
+.icons a:visited{
   background:rgba(17,17,17,0.92);
   color:var(--accent);
   border-color:rgba(255,255,255,0.08);
@@ -615,7 +617,8 @@ header.scrolled{
 }
 
 .icons a:focus i,
-.icons a:focus-visible i{
+.icons a:focus-visible i,
+.icons a:visited i{
   transform:none;
 }
 
