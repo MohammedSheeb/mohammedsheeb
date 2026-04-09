@@ -256,30 +256,10 @@ header.scrolled{
   transform:translate(-50%, -50%) rotate(-45deg);
 }
 
-body{
-  color:var(--text);
-  overflow-x:hidden;
-  background:#000;
-  opacity:0;
-  transform:scale(1.02);
-  animation:pageEnter 0.8s ease forwards;
-}
-
-@keyframes pageEnter{
-  from{
-    opacity:0;
-    transform:scale(1.02);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-}
-
 .reveal{
   opacity:0;
-  transform:translateY(30px) scale(0.98);
-  animation:fadeUp 0.9s ease forwards;
+  transform:translateY(22px);
+  animation:fadeUp 0.8s ease forwards;
 }
 
 .delay-1{ animation-delay:0.08s; }
@@ -291,7 +271,7 @@ body{
 @keyframes fadeUp{
   to{
     opacity:1;
-    transform:translateY(0) scale(1);
+    transform:translateY(0);
   }
 }
 
