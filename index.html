@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mohammed Sheeb</title>
 
-  <!-- 🔥 Embed -->
   <meta property="og:title" content="Mohammed Sheeb">
   <meta property="og:description" content="Official personal website of Mohammed Sheeb">
   <meta property="og:url" content="https://mohammedsheeb.online/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://mohammedsheeb.online/logo.png">
 
-  <!-- أيقونة الموقع -->
   <link rel="icon" type="image/png" href="logo.png">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
@@ -25,10 +23,10 @@
   <header id="siteHeader">
     <div class="container header-inner">
       <div class="logo">
-  <a href="https://mohammedsheeb.online/">
-    <img src="logo.png" alt="Logo" class="logo-img">
-  </a>
-</div>
+        <a href="https://mohammedsheeb.online/">
+          <img src="logo.png" alt="Logo" class="logo-img">
+        </a>
+      </div>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav">
         <span></span>
@@ -66,7 +64,6 @@
         I enjoy working on personal projects, improving my skills, and connecting with others online.
       </p>
 
-      <!-- 🎮 My Favorite Games -->
       <div class="about-subtitle">
         <span class="game-icon">🎮</span>
         My Favorite Games
@@ -198,6 +195,8 @@
 
     menuToggle.addEventListener("click", () => {
       siteNav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+
       const expanded = siteNav.classList.contains("open");
       menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
     });
@@ -205,15 +204,11 @@
     siteNav.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         siteNav.classList.remove("open");
+        menuToggle.classList.remove("active");
         menuToggle.setAttribute("aria-expanded", "false");
       });
     });
 
-    loadDiscord();
-    setInterval(loadDiscord, 30000);
-  </script>
-
-  <script>
     document.querySelectorAll('.icons a').forEach(link => {
       link.addEventListener('click', function () {
         this.blur();
@@ -223,28 +218,10 @@
     window.addEventListener('pageshow', () => {
       document.querySelectorAll('.icons a').forEach(link => link.blur());
     });
+
+    loadDiscord();
+    setInterval(loadDiscord, 30000);
   </script>
-
-<script>
-menuToggle.addEventListener("click", () => {
-  siteNav.classList.toggle("open");
-  menuToggle.classList.toggle("active");
-
-  const expanded = siteNav.classList.contains("open");
-  menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-});
-
-siteNav.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    siteNav.classList.remove("open");
-    menuToggle.classList.remove("active");
-    menuToggle.setAttribute("aria-expanded", "false");
-  });
-});
-</script>
-
-</body>
-</html>
 
 </body>
 </html>
