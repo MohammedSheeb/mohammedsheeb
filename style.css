@@ -898,3 +898,7 @@ img{
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+.logo-img{
+  pointer-events: auto;
+}
