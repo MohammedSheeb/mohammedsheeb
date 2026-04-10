@@ -92,5 +92,14 @@ document.querySelectorAll("img").forEach(img => {
   });
 });
 
+// تشغيل الديسكورد
 loadDiscord();
 setInterval(loadDiscord, 30000);
+
+// ✅ السنة التلقائية (مضمون)
+document.addEventListener("DOMContentLoaded", () => {
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+});
