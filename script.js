@@ -14,7 +14,7 @@ async function loadDiscord() {
 
     const name = user.global_name ? user.global_name : user.username;
     document.getElementById("displayName").innerText = name;
-    document.getElementById("tag").innerText = "@" + user.username;
+    document.getElementById("tag").innerText = user.username;
     document.getElementById("dot").className = "status-dot " + status;
     document.getElementById("statusMiniDot").className = "mini-dot " + status;
 
