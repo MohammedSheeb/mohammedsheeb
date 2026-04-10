@@ -98,6 +98,7 @@ header.scrolled{
   height:60px;
   width:auto;
   display:block;
+  pointer-events:auto;
 }
 
 .nav{
@@ -461,7 +462,6 @@ header.scrolled{
   flex-shrink:0;
 }
 
-/* الصورة */
 .avatar #avatar{
   width:100%;
   height:100%;
@@ -472,20 +472,17 @@ header.scrolled{
   z-index:1;
 }
 
-/* 🔥 الإطار (مهم جداً) */
 .avatar-frame{
   position:absolute;
   top:-11px;
   left:-7px;
   width:calc(100% + 14px);
   height:calc(100% + 22px);
-
   object-fit:contain;
   pointer-events:none;
   z-index:2;
 }
 
-/* الحالة فوق الكل */
 .status-dot{
   width:18px;
   height:18px;
@@ -598,7 +595,12 @@ header.scrolled{
 .icons a i{
   position:relative;
   z-index:1;
-  transition:transform 0.28s ease;
+  display:inline-block;
+  color:inherit;
+  line-height:1;
+  transition:
+    transform 0.28s ease,
+    color 0.28s ease;
 }
 
 .icons a:hover{
@@ -612,6 +614,12 @@ header.scrolled{
 }
 
 .icons a:hover i{
+  transform:scale(1.12);
+  color:#fff;
+}
+
+.icons a:hover .fa-tiktok{
+  color:#fff !important;
   transform:scale(1.12);
 }
 
@@ -910,11 +918,8 @@ footer{
 }
 
 img{
-  -webkit-user-drag: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag:none;
+  user-select:none;
+  -webkit-touch-callout:none;
+  -webkit-tap-highlight-color:transparent;
 }
-
-.logo-img{
-  pointer-events: auto;
