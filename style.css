@@ -476,7 +476,7 @@ header.scrolled{
 .avatar-frame{
   position:absolute;
   top:-11px;
-  left:-7px;
+  left:-8px;
   width:calc(100% + 14px);
   height:calc(100% + 22px);
   object-fit:contain;
