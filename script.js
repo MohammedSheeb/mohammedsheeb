@@ -82,8 +82,6 @@ document.addEventListener("contextmenu", function(e) {
   }
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
 document.querySelectorAll("img").forEach(img => {
   if (img.closest(".logo")) return;
 
