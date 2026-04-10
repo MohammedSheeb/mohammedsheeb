@@ -498,13 +498,6 @@ header.scrolled{
   z-index:3;
 }
 
-.mini-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  flex-shrink:0;
-}
-
 .online{background:var(--online);}
 .idle{background:var(--idle);}
 .dnd{background:var(--dnd);}
