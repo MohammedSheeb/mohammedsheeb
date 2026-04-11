@@ -993,3 +993,51 @@ footer p{
   color:#aaa;
   opacity:0.82;
 }
+
+.pubgm-image-box{
+  margin-top:20px;
+  text-align:center;
+}
+
+.pubgm-image{
+  width:100%;
+  max-width:420px;
+  border-radius:18px;
+  display:block;
+  margin:0 auto 14px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.5),
+    0 0 20px rgba(229,9,20,0.2);
+  transition:transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pubgm-image:hover{
+  transform:scale(1.05);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.6),
+    0 0 30px rgba(229,9,20,0.3);
+}
+
+.pubgm-btn{
+  display:inline-block;
+  padding:10px 22px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+  background:linear-gradient(135deg,#e50914,#ff2a36);
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(229,9,20,0.3);
+  transition:all 0.3s ease;
+}
+
+.pubgm-btn:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:
+    0 10px 25px rgba(229,9,20,0.4),
+    0 0 18px rgba(229,9,20,0.25);
+}
+
+.pubgm-btn:active{
+  transform:scale(0.95);
+}
