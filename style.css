@@ -1041,3 +1041,25 @@ footer p{
 .pubgm-btn:active{
   transform:scale(0.95);
 }
+
+.pubgm-image{
+  width:100%;
+  max-width:600px; /* حجم مناسب للموبايل */
+  display:block;
+  margin:20px auto;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  transition:0.3s;
+}
+
+@media (min-width: 768px){
+  .pubgm-image{
+    max-width:800px;
+  }
+}
+
+@media (min-width: 1200px){
+  .pubgm-image{
+    max-width:1000px;
+  }
+}
