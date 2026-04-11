@@ -538,14 +538,17 @@ header.scrolled{
 .chip{
   display:flex;
   align-items:center;
-  gap:8px;
-  padding:8px 14px;
-  border-radius:14px;
+  gap:6px;
+
+  padding:6px 10px;
+  border-radius:10px;
+
   background:var(--chip);
   border:1px solid var(--border);
   color:#e3e3e3;
-  min-height:44px;
-  font-size:14px;
+
+  min-height:auto;
+  font-size:12px;
 }
 
 .social{
