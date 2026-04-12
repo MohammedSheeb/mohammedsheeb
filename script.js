@@ -7,6 +7,8 @@ async function loadDiscord() {
 
     const user = data.data.discord_user;
     const status = data.data.discord_status;
+    const activities = data.data.activities;
+
     const isAnimated = user.avatar && user.avatar.startsWith("a_");
     const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${isAnimated ? "gif" : "png"}`;
 
@@ -16,12 +18,49 @@ async function loadDiscord() {
     document.getElementById("displayName").innerText = name;
     document.getElementById("tag").innerText = user.username;
     document.getElementById("dot").className = "status-dot " + status;
-    document.getElementById("statusMiniDot").className = "mini-dot " + status;
 
-    document.getElementById("statusText").innerText =
-      status === "online" ? "Online" :
-      status === "idle" ? "Idle" :
-      status === "dnd" ? "Do Not Disturb" : "Offline";
+    // custom status
+    let custom = activities.find(a => a.type === 4);
+
+    if (custom) {
+      document.getElementById("customStatus").innerText = custom.state || "";
+    } else {
+      document.getElementById("customStatus").innerText = "";
+    }
+
+    // activity + time
+    let activity = activities.find(a => a.type === 0);
+
+    if (activity) {
+      document.getElementById("activityCard").style.display = "flex";
+      document.getElementById("activityName").innerText = activity.name || "Activity";
+
+      if (activity.timestamps && activity.timestamps.start) {
+        const start = activity.timestamps.start;
+
+        function updateTime() {
+          const now = Date.now();
+          const diff = Math.floor((now - start) / 1000);
+
+          const minutes = Math.floor(diff / 60);
+          const seconds = diff % 60;
+
+          document.getElementById("activityDesc").innerText =
+            `${minutes}:${seconds.toString().padStart(2, '0')} elapsed`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+      } else {
+        document.getElementById("activityDesc").innerText = "Active now";
+      }
+
+    } else {
+      document.getElementById("activityCard").style.display = "flex";
+      document.getElementById("activityName").innerText = "Just Chilling";
+      document.getElementById("activityDesc").innerText = "No current activity";
+    }
+
   } catch (e) {
     console.error("Failed to load Discord data");
   }
