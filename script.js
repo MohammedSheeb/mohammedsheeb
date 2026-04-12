@@ -2,12 +2,20 @@ const userId = "1481454957512101950";
 
 let activityInterval = null;
 
+/* =========================
+   UTILS
+========================= */
+
 function formatTime(seconds) {
   const safe = Math.max(0, seconds);
   const minutes = Math.floor(safe / 60);
   const secs = safe % 60;
   return `${minutes}:${secs.toString().padStart(2, "0")}`;
 }
+
+/* =========================
+   AVATAR EFFECT
+========================= */
 
 function applyAvatarDecoration(user) {
   const frameEl = document.getElementById("avatarFrame");
@@ -39,12 +47,16 @@ function applyAvatarDecoration(user) {
   }
 }
 
+/* =========================
+   CUSTOM STATUS
+========================= */
+
 function applyCustomStatus(activities) {
   const customEl = document.getElementById("customStatus");
   const customEmojiEl = document.getElementById("customStatusEmoji");
   const customTextEl = document.getElementById("customStatusText");
 
-  if (!customEl || !customEmojiEl || !customTextEl) return;
+  if (!customEl) return;
 
   const custom = activities.find(a => a.type === 4);
 
@@ -53,26 +65,23 @@ function applyCustomStatus(activities) {
     customEmojiEl.innerHTML = "";
 
     if (custom.emoji) {
-      if (!custom.emoji.id && custom.emoji.name) {
+      if (!custom.emoji.id) {
         customEmojiEl.textContent = custom.emoji.name;
-      } else if (custom.emoji.id) {
-        const emojiExt = custom.emoji.animated ? "gif" : "png";
-        const emojiUrl = `https://cdn.discordapp.com/emojis/${custom.emoji.id}.${emojiExt}?size=64&quality=lossless`;
-        customEmojiEl.innerHTML = `<img src="${emojiUrl}" alt="">`;
+      } else {
+        const ext = custom.emoji.animated ? "gif" : "png";
+        customEmojiEl.innerHTML = `<img src="https://cdn.discordapp.com/emojis/${custom.emoji.id}.${ext}" />`;
       }
     }
 
-    if (!custom.state && !custom.emoji) {
-      customEl.style.display = "none";
-    } else {
-      customEl.style.display = "flex";
-    }
+    customEl.style.display = "flex";
   } else {
     customEl.style.display = "none";
-    customEmojiEl.innerHTML = "";
-    customTextEl.innerText = "";
   }
 }
+
+/* =========================
+   ACTIVITY
+========================= */
 
 function resetActivityTimer() {
   if (activityInterval) {
@@ -82,151 +91,83 @@ function resetActivityTimer() {
 }
 
 function setFallbackActivity() {
-  const activityCard = document.getElementById("activityCard");
-  const activityName = document.getElementById("activityName");
-  const activityArtist = document.getElementById("activityArtist");
-  const activityCover = document.getElementById("activityCover");
-  const progressBar = document.getElementById("progressBar");
-  const timeCurrent = document.getElementById("timeCurrent");
-  const timeTotal = document.getElementById("timeTotal");
-  const spotifyHeader = document.getElementById("spotifyHeader");
-  const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
-  const activityIconFallback = document.getElementById("activityIconFallback");
-
-  activityCard.style.display = "flex";
-  spotifyHeader.style.display = "none";
-  spotifyProgressWrap.style.display = "none";
-
-  activityName.innerText = "Just Chilling";
-  activityArtist.innerText = "No current activity";
-
-  activityCover.style.display = "none";
-  activityCover.removeAttribute("src");
-
-  activityIconFallback.style.display = "flex";
-
-  progressBar.style.width = "0%";
-  timeCurrent.innerText = "";
-  timeTotal.innerText = "";
+  document.getElementById("activityName").innerText = "Available";
+  document.getElementById("activityArtist").innerText = "No activity right now";
+  document.getElementById("activityCover").style.display = "none";
+  document.getElementById("activityIconFallback").style.display = "flex";
 }
 
 function setSpotifyActivity(spotify) {
-  const activityCard = document.getElementById("activityCard");
-  const activityName = document.getElementById("activityName");
-  const activityArtist = document.getElementById("activityArtist");
-  const activityCover = document.getElementById("activityCover");
-  const progressBar = document.getElementById("progressBar");
-  const timeCurrent = document.getElementById("timeCurrent");
-  const timeTotal = document.getElementById("timeTotal");
-  const spotifyHeader = document.getElementById("spotifyHeader");
-  const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
-  const activityIconFallback = document.getElementById("activityIconFallback");
+  const cover = document.getElementById("activityCover");
+  const name = document.getElementById("activityName");
+  const artist = document.getElementById("activityArtist");
+  const bar = document.getElementById("progressBar");
 
-  activityCard.style.display = "flex";
-  spotifyHeader.style.display = "flex";
-  spotifyProgressWrap.style.display = "block";
-  activityIconFallback.style.display = "none";
+  cover.src = spotify.album_art_url;
+  cover.style.display = "block";
 
-  activityName.innerText = spotify.song || "Spotify";
-  activityArtist.innerText = spotify.artist || "";
-  activityCover.src = spotify.album_art_url || "";
-  activityCover.style.display = "block";
+  name.innerText = spotify.song;
+  artist.innerText = spotify.artist;
 
-  const start = spotify.timestamps?.start;
-  const end = spotify.timestamps?.end;
+  const start = spotify.timestamps.start;
+  const end = spotify.timestamps.end;
 
-  if (start && end) {
-    const updateSpotifyProgress = () => {
-      const now = Date.now();
-      const totalSeconds = Math.floor((end - start) / 1000);
-      const currentSeconds = Math.floor((now - start) / 1000);
-      const percent = Math.min(100, Math.max(0, (currentSeconds / totalSeconds) * 100));
+  const update = () => {
+    const now = Date.now();
+    const total = (end - start) / 1000;
+    const current = (now - start) / 1000;
+    const percent = Math.min(100, (current / total) * 100);
 
-      progressBar.style.width = `${percent}%`;
-      timeCurrent.innerText = formatTime(currentSeconds);
-      timeTotal.innerText = formatTime(totalSeconds);
-    };
+    bar.style.width = percent + "%";
+  };
 
-    updateSpotifyProgress();
-    activityInterval = setInterval(updateSpotifyProgress, 1000);
-  } else {
-    progressBar.style.width = "0%";
-    timeCurrent.innerText = "0:00";
-    timeTotal.innerText = "0:00";
-  }
+  update();
+  activityInterval = setInterval(update, 1000);
 }
 
 function setOtherActivity(activity) {
-  const activityCard = document.getElementById("activityCard");
-  const activityName = document.getElementById("activityName");
-  const activityArtist = document.getElementById("activityArtist");
-  const activityCover = document.getElementById("activityCover");
-  const progressBar = document.getElementById("progressBar");
-  const timeCurrent = document.getElementById("timeCurrent");
-  const timeTotal = document.getElementById("timeTotal");
-  const spotifyHeader = document.getElementById("spotifyHeader");
-  const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
-  const activityIconFallback = document.getElementById("activityIconFallback");
+  const name = document.getElementById("activityName");
+  const artist = document.getElementById("activityArtist");
+  const cover = document.getElementById("activityCover");
 
-  activityCard.style.display = "flex";
-  spotifyHeader.style.display = "none";
-  spotifyProgressWrap.style.display = "none";
+  name.innerText = activity.name;
+  artist.innerText = activity.details || activity.state || "";
 
-  activityName.innerText = activity.name || "Activity";
-  activityArtist.innerText = activity.details || activity.state || "";
-
-  const largeImage = activity.assets?.large_image;
-  if (largeImage) {
-    if (largeImage.startsWith("mp:external/")) {
-      activityCover.src = `https://media.discordapp.net/${largeImage.slice(3)}`;
-    } else {
-      activityCover.src = `https://cdn.discordapp.com/app-assets/${activity.application_id}/${largeImage}.png`;
-    }
-
-    activityCover.style.display = "block";
-    activityIconFallback.style.display = "none";
+  if (activity.assets?.large_image) {
+    cover.src = `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png`;
+    cover.style.display = "block";
   } else {
-    activityCover.style.display = "none";
-    activityCover.removeAttribute("src");
-    activityIconFallback.style.display = "flex";
+    cover.style.display = "none";
   }
-
-  progressBar.style.width = "0%";
-  timeCurrent.innerText = "";
-  timeTotal.innerText = "";
 }
+
+/* =========================
+   MAIN RENDER
+========================= */
 
 function renderDiscordPresence(payload) {
   const user = payload.discord_user;
-  const status = payload.discord_status;
   const activities = payload.activities || [];
   const spotify = payload.spotify;
-  const listeningToSpotify = payload.listening_to_spotify;
 
-  const isAnimated = user.avatar && user.avatar.startsWith("a_");
-  const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${isAnimated ? "gif" : "png"}`;
+  const avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
 
-  document.getElementById("avatar").src = avatarUrl;
-  document.getElementById("displayName").innerText = user.global_name ? user.global_name : user.username;
-  document.getElementById("tag").innerText = user.username;
-  document.getElementById("dot").className = "status-dot " + status;
+  document.getElementById("avatar").src = avatar;
+  document.getElementById("displayName").innerText = user.global_name || user.username;
+  document.getElementById("tag").innerText = "@" + user.username;
+  document.getElementById("dot").className = "status-dot " + payload.discord_status;
 
   applyAvatarDecoration(user);
   applyCustomStatus(activities);
 
   resetActivityTimer();
 
-  if (listeningToSpotify && spotify) {
+  if (payload.listening_to_spotify && spotify) {
     setSpotifyActivity(spotify);
     return;
   }
 
-  const activity =
-    activities.find(a => a.type === 0) ||
-    activities.find(a => a.type === 1) ||
-    activities.find(a => a.type === 3) ||
-    activities.find(a => a.type === 5);
-
+  const activity = activities.find(a => a.type === 0);
   if (activity) {
     setOtherActivity(activity);
   } else {
@@ -234,121 +175,78 @@ function renderDiscordPresence(payload) {
   }
 }
 
+/* =========================
+   API + SOCKET
+========================= */
+
 async function loadDiscord() {
-  try {
-    const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-    const data = await res.json();
-    renderDiscordPresence(data.data);
-  } catch (e) {
-    console.error("Failed to load Discord data", e);
-  }
+  const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+  const data = await res.json();
+  renderDiscordPresence(data.data);
 }
 
 function connectLanyard() {
   const socket = new WebSocket("wss://api.lanyard.rest/socket");
 
-  socket.addEventListener("open", () => {
+  socket.onopen = () => {
     socket.send(JSON.stringify({
       op: 2,
-      d: {
-        subscribe_to_id: userId
-      }
+      d: { subscribe_to_id: userId }
     }));
-  });
+  };
 
-  socket.addEventListener("message", (event) => {
+  socket.onmessage = (event) => {
     const payload = JSON.parse(event.data);
 
-    if (payload.op === 1) {
-      socket.send(JSON.stringify({ op: 3 }));
-      return;
-    }
-
-    if (payload.t === "INIT_STATE" && payload.d) {
+    if (payload.t === "INIT_STATE" || payload.t === "PRESENCE_UPDATE") {
       renderDiscordPresence(payload.d);
     }
+  };
 
-    if (payload.t === "PRESENCE_UPDATE" && payload.d) {
-      renderDiscordPresence(payload.d);
-    }
-  });
-
-  socket.addEventListener("close", () => {
-    setTimeout(connectLanyard, 3000);
-  });
-
-  socket.addEventListener("error", () => {
-    socket.close();
-  });
+  socket.onclose = () => setTimeout(connectLanyard, 3000);
 }
 
-const header = document.getElementById("siteHeader");
+/* =========================
+   UI EFFECTS
+========================= */
+
+// HEADER SCROLL
 window.addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", window.scrollY > 8);
+  document.getElementById("siteHeader")
+    .classList.toggle("scrolled", window.scrollY > 10);
 });
 
-const menuToggle = document.getElementById("menuToggle");
-const siteNav = document.getElementById("siteNav");
+// MENU
+const toggle = document.getElementById("menuToggle");
+const nav = document.getElementById("siteNav");
 
-menuToggle.addEventListener("click", () => {
-  siteNav.classList.toggle("open");
-  menuToggle.classList.toggle("active");
+toggle.onclick = () => {
+  nav.classList.toggle("open");
+  toggle.classList.toggle("active");
+};
 
-  const expanded = siteNav.classList.contains("open");
-  menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+// BLUR FIX
+document.querySelectorAll(".icons a").forEach(link => {
+  link.onclick = () => setTimeout(() => link.blur(), 100);
 });
 
-siteNav.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    siteNav.classList.remove("open");
-    menuToggle.classList.remove("active");
-    menuToggle.setAttribute("aria-expanded", "false");
-  });
-});
-
-const socialLinks = document.querySelectorAll(".icons a");
-
-socialLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    setTimeout(() => link.blur(), 0);
-  });
-
-  link.addEventListener("mouseup", () => link.blur());
-  link.addEventListener("touchend", () => link.blur());
-});
-
-window.addEventListener("pageshow", () => {
-  socialLinks.forEach(link => link.blur());
-});
-
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) {
-    socialLinks.forEach(link => link.blur());
-  }
-});
-
-document.addEventListener("contextmenu", function(e) {
-  if (e.target.tagName === "IMG" && !e.target.closest(".logo")) {
-    e.preventDefault();
-  }
-});
+/* =========================
+   IMAGE PROTECTION (SMART)
+========================= */
 
 document.querySelectorAll("img").forEach(img => {
-  if (img.closest(".logo")) return;
-
   img.addEventListener("dragstart", e => e.preventDefault());
-  img.addEventListener("touchstart", e => e.preventDefault(), { passive: false });
-  img.addEventListener("mousedown", e => {
-    if (e.button === 2) e.preventDefault();
-  });
 });
+
+/* =========================
+   YEAR
+========================= */
+
+document.getElementById("year").innerText = new Date().getFullYear();
+
+/* =========================
+   INIT
+========================= */
 
 loadDiscord();
 connectLanyard();
-
-document.addEventListener("DOMContentLoaded", () => {
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-});
