@@ -1303,15 +1303,15 @@ footer p{
 
 .activity-top-row{
   display:flex;
+  align-items:center;
   gap:12px;
-  align-items:flex-start;
 }
 
 .activity-icon-fallback{
-  width:56px;
-  height:56px;
-  border-radius:14px;
-  background:rgba(255,255,255,0.05);
+  width:50px;
+  height:50px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.06);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -1326,6 +1326,8 @@ footer p{
 .activity-text{
   min-width:0;
   flex:1;
+  display:flex;
+  flex-direction:column;
 }
 
 .activity-name{
@@ -1350,10 +1352,11 @@ footer p{
 
 .progress{
   width:100%;
-  height:6px;
-  background:rgba(255,255,255,0.08);
+  height:5px;
+  background:#222;
   border-radius:999px;
   overflow:hidden;
+  margin-top:6px;
 }
 
 .progress-bar{
