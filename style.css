@@ -47,6 +47,16 @@ body::after{
   pointer-events:none;
 }
 
+body{
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+img{
+  touch-action: pan-y;
+}
+
 @media (orientation: landscape), (min-width:768px){
   body::before{
     background:#000 url("bg-horizontal.jpg") center/cover no-repeat;
