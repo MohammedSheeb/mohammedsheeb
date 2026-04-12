@@ -481,8 +481,9 @@ header.scrolled{
 
 .profile{
   display:flex;
-  align-items:flex-start;
+  align-items:center;
   gap:16px;
+  padding-top:6px;
 }
 
 .profile > div{
@@ -1168,7 +1169,7 @@ footer::before{
   }
 
   .profile > div{
-    transform:translateY(8px);
+    transform:translateY(12px);
   }
 
   .avatar{
