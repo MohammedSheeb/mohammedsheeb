@@ -139,20 +139,37 @@
 
         <div id="customStatus" class="custom-status"></div>
 
-        <div id="activityCard" class="activity-card">
-  <img id="activityCover" class="activity-cover" src="" alt="">
+<div id="activityCard" class="activity-card">
+  <div id="spotifyHeader" class="spotify-header" style="display:none;">
+    <span>Listening to Spotify</span>
+    <i class="fab fa-spotify"></i>
+  </div>
 
-  <div class="activity-info">
-    <div id="activityName" class="activity-name">Just Chilling</div>
-    <div id="activityArtist" class="activity-artist"></div>
+  <div class="activity-main">
+    <img id="activityCover" class="activity-cover" src="" alt="" style="display:none;">
 
-    <div class="progress">
-      <div id="progressBar" class="progress-bar"></div>
-    </div>
+    <div class="activity-info">
+      <div class="activity-top-row">
+        <div id="activityIconFallback" class="activity-icon-fallback">
+          <i class="fas fa-moon"></i>
+        </div>
 
-    <div class="time">
-      <span id="timeCurrent">0:00</span>
-      <span id="timeTotal">0:00</span>
+        <div class="activity-text">
+          <div id="activityName" class="activity-name">Just Chilling</div>
+          <div id="activityArtist" class="activity-artist">No current activity</div>
+        </div>
+      </div>
+
+      <div id="spotifyProgressWrap" class="spotify-progress-wrap" style="display:none;">
+        <div class="progress">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div class="time">
+          <span id="timeCurrent">0:00</span>
+          <span id="timeTotal">0:00</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
