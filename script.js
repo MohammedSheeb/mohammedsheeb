@@ -24,15 +24,12 @@ async function loadDiscord() {
     const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${isAnimated ? "gif" : "png"}`;
     document.getElementById("avatar").src = avatarUrl;
 
-    // 🔥 avatar decoration (GIF or PNG auto)
     const frameEl = document.getElementById("avatarFrame");
-
     if (frameEl) {
       const decoration = user.avatar_decoration_data;
 
       if (decoration && decoration.asset) {
         const asset = decoration.asset;
-
         const gifUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.gif`;
         const pngUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.png`;
 
@@ -67,19 +64,25 @@ async function loadDiscord() {
     const progressBar = document.getElementById("progressBar");
     const timeCurrent = document.getElementById("timeCurrent");
     const timeTotal = document.getElementById("timeTotal");
+    const spotifyHeader = document.getElementById("spotifyHeader");
+    const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
+    const activityIconFallback = document.getElementById("activityIconFallback");
 
     const custom = activities.find(a => a.type === 4);
     customEl.innerText = custom ? (custom.state || "") : "";
 
     clearInterval(activityInterval);
 
-    // 🎵 Spotify
     if (listeningToSpotify && spotify) {
       activityCard.style.display = "flex";
+      spotifyHeader.style.display = "flex";
+      spotifyProgressWrap.style.display = "block";
+      activityCover.style.display = "block";
+      activityIconFallback.style.display = "none";
+
       activityName.innerText = spotify.song || "Spotify";
       activityArtist.innerText = spotify.artist || "";
       activityCover.src = spotify.album_art_url || "";
-      activityCover.style.display = "block";
 
       const start = spotify.timestamps?.start;
       const end = spotify.timestamps?.end;
@@ -107,17 +110,19 @@ async function loadDiscord() {
       return;
     }
 
-    // 🎮 Other activities
     const activity =
       activities.find(a => a.type === 0) ||
       activities.find(a => a.type === 1) ||
       activities.find(a => a.type === 3) ||
       activities.find(a => a.type === 5);
 
+    spotifyHeader.style.display = "none";
+
     if (activity) {
       activityCard.style.display = "flex";
       activityName.innerText = activity.name || "Activity";
       activityArtist.innerText = activity.details || activity.state || "";
+      spotifyProgressWrap.style.display = "none";
 
       const largeImage = activity.assets?.large_image;
       if (largeImage) {
@@ -127,54 +132,25 @@ async function loadDiscord() {
           activityCover.src = `https://cdn.discordapp.com/app-assets/${activity.application_id}/${largeImage}.png`;
         }
         activityCover.style.display = "block";
+        activityIconFallback.style.display = "none";
       } else {
         activityCover.style.display = "none";
         activityCover.removeAttribute("src");
+        activityIconFallback.style.display = "flex";
       }
 
-      if (activity.timestamps && activity.timestamps.start && activity.timestamps.end) {
-        const start = activity.timestamps.start;
-        const end = activity.timestamps.end;
-
-        const updateTimedActivity = () => {
-          const now = Date.now();
-          const totalSeconds = Math.floor((end - start) / 1000);
-          const currentSeconds = Math.floor((now - start) / 1000);
-          const percent = Math.min(100, Math.max(0, (currentSeconds / totalSeconds) * 100));
-
-          progressBar.style.width = `${percent}%`;
-          timeCurrent.innerText = formatTime(currentSeconds);
-          timeTotal.innerText = formatTime(totalSeconds);
-        };
-
-        updateTimedActivity();
-        activityInterval = setInterval(updateTimedActivity, 1000);
-      } else if (activity.timestamps && activity.timestamps.start) {
-        const start = activity.timestamps.start;
-
-        const updateElapsedActivity = () => {
-          const now = Date.now();
-          const currentSeconds = Math.floor((now - start) / 1000);
-
-          progressBar.style.width = "100%";
-          timeCurrent.innerText = formatTime(currentSeconds);
-          timeTotal.innerText = "Live";
-        };
-
-        updateElapsedActivity();
-        activityInterval = setInterval(updateElapsedActivity, 1000);
-      } else {
-        progressBar.style.width = "0%";
-        timeCurrent.innerText = "";
-        timeTotal.innerText = "";
-      }
-
+      progressBar.style.width = "0%";
+      timeCurrent.innerText = "";
+      timeTotal.innerText = "";
     } else {
       activityCard.style.display = "flex";
+      spotifyHeader.style.display = "none";
+      spotifyProgressWrap.style.display = "none";
       activityName.innerText = "Just Chilling";
       activityArtist.innerText = "No current activity";
       activityCover.style.display = "none";
       activityCover.removeAttribute("src");
+      activityIconFallback.style.display = "flex";
       progressBar.style.width = "0%";
       timeCurrent.innerText = "";
       timeTotal.innerText = "";
