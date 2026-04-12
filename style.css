@@ -1330,3 +1330,27 @@ footer p{
   color:#aaa;
   opacity:0.82;
 }
+
+.netflix-grid a{
+  display:block;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.netflix-poster{
+  width:100%;
+  display:block;
+  border-radius:14px;
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+.netflix-grid a:hover .netflix-poster{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+
+.netflix-grid a:active .netflix-poster{
+  transform:scale(1.1);
+}
