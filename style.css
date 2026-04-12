@@ -1071,12 +1071,11 @@ footer p{
   font-family: 'Headliner', sans-serif;
   font-size: 26px;
   letter-spacing: 2px;
+  color: #ffffff;
 
-  background: linear-gradient(180deg, #ffffff, #cfcfcf);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: #ffffff;
 
-  text-shadow:
-    0 2px 6px rgba(0,0,0,0.6),
-    0 0 14px rgba(229,9,20,0.2);
+  text-shadow: none;
 }
