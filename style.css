@@ -978,6 +978,17 @@ footer::before{
   .header-inner{
     min-height:70px;
   }
+  
+@media (max-width:600px){
+  .netflix-grid{
+    grid-template-columns:repeat(3, 1fr);
+    gap:8px;
+  }
+
+  .netflix-poster{
+    border-radius:10px;
+  }
+}
 
   .logo-img{
     height:65px;
@@ -1331,21 +1342,24 @@ footer p{
   opacity:0.82;
 }
 
-.netflix-grid a{
-  display:block;
-  border-radius:14px;
-  overflow:hidden;
+.netflix-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:12px;
+  margin-top:14px;
 }
 
 .netflix-poster{
   width:100%;
-  display:block;
-  border-radius:14px;
+  aspect-ratio:2/3; /* يخليها بوستر مثل نيتفلكس */
+  object-fit:cover;
+  border-radius:12px;
   transition:transform 0.25s ease, box-shadow 0.25s ease;
+  cursor:pointer;
 }
 
-
-.netflix-grid a:hover .netflix-poster{
+/* تأثير hover */
+.netflix-poster:hover{
   transform:scale(1.05);
   box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
