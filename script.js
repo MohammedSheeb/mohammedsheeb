@@ -2,20 +2,12 @@ const userId = "1481454957512101950";
 
 let activityInterval = null;
 
-/* =========================
-   UTILS
-========================= */
-
 function formatTime(seconds) {
   const safe = Math.max(0, seconds);
   const minutes = Math.floor(safe / 60);
   const secs = safe % 60;
   return `${minutes}:${secs.toString().padStart(2, "0")}`;
 }
-
-/* =========================
-   AVATAR EFFECT
-========================= */
 
 function applyAvatarDecoration(user) {
   const frameEl = document.getElementById("avatarFrame");
@@ -47,10 +39,6 @@ function applyAvatarDecoration(user) {
   }
 }
 
-/* =========================
-   CUSTOM STATUS
-========================= */
-
 function applyCustomStatus(activities) {
   const customEl = document.getElementById("customStatus");
   const customEmojiEl = document.getElementById("customStatusEmoji");
@@ -65,11 +53,12 @@ function applyCustomStatus(activities) {
     customEmojiEl.innerHTML = "";
 
     if (custom.emoji) {
-      if (!custom.emoji.id) {
-        customEmojiEl.textContent = custom.emoji.name || "";
-      } else {
-        const ext = custom.emoji.animated ? "gif" : "png";
-        customEmojiEl.innerHTML = `<img src="https://cdn.discordapp.com/emojis/${custom.emoji.id}.${ext}?size=64&quality=lossless">`;
+      if (!custom.emoji.id && custom.emoji.name) {
+        customEmojiEl.textContent = custom.emoji.name;
+      } else if (custom.emoji.id) {
+        const emojiExt = custom.emoji.animated ? "gif" : "png";
+        const emojiUrl = `https://cdn.discordapp.com/emojis/${custom.emoji.id}.${emojiExt}?size=64&quality=lossless`;
+        customEmojiEl.innerHTML = `<img src="${emojiUrl}" alt="">`;
       }
     }
 
@@ -85,10 +74,6 @@ function applyCustomStatus(activities) {
   }
 }
 
-/* =========================
-   ACTIVITY
-========================= */
-
 function resetActivityTimer() {
   if (activityInterval) {
     clearInterval(activityInterval);
@@ -97,84 +82,150 @@ function resetActivityTimer() {
 }
 
 function setFallbackActivity() {
-  document.getElementById("activityName").innerText = "Available";
-  document.getElementById("activityArtist").innerText = "No activity right now";
-  document.getElementById("activityCover").style.display = "none";
-  document.getElementById("activityIconFallback").style.display = "flex";
+  const activityCard = document.getElementById("activityCard");
+  const activityName = document.getElementById("activityName");
+  const activityArtist = document.getElementById("activityArtist");
+  const activityCover = document.getElementById("activityCover");
+  const progressBar = document.getElementById("progressBar");
+  const timeCurrent = document.getElementById("timeCurrent");
+  const timeTotal = document.getElementById("timeTotal");
+  const spotifyHeader = document.getElementById("spotifyHeader");
+  const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
+  const activityIconFallback = document.getElementById("activityIconFallback");
+
+  activityCard.style.display = "flex";
+  spotifyHeader.style.display = "none";
+  spotifyProgressWrap.style.display = "none";
+
+  activityName.innerText = "Just Chilling";
+  activityArtist.innerText = "No current activity";
+
+  activityCover.style.display = "none";
+  activityCover.removeAttribute("src");
+
+  activityIconFallback.style.display = "flex";
+
+  progressBar.style.width = "0%";
+  timeCurrent.innerText = "";
+  timeTotal.innerText = "";
 }
 
 function setSpotifyActivity(spotify) {
-  const cover = document.getElementById("activityCover");
-  const name = document.getElementById("activityName");
-  const artist = document.getElementById("activityArtist");
-  const bar = document.getElementById("progressBar");
+  const activityCard = document.getElementById("activityCard");
+  const activityName = document.getElementById("activityName");
+  const activityArtist = document.getElementById("activityArtist");
+  const activityCover = document.getElementById("activityCover");
+  const progressBar = document.getElementById("progressBar");
+  const timeCurrent = document.getElementById("timeCurrent");
+  const timeTotal = document.getElementById("timeTotal");
+  const spotifyHeader = document.getElementById("spotifyHeader");
+  const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
+  const activityIconFallback = document.getElementById("activityIconFallback");
 
-  cover.src = spotify.album_art_url;
-  cover.style.display = "block";
+  activityCard.style.display = "flex";
+  spotifyHeader.style.display = "flex";
+  spotifyProgressWrap.style.display = "block";
+  activityIconFallback.style.display = "none";
 
-  name.innerText = spotify.song;
-  artist.innerText = spotify.artist;
+  activityName.innerText = spotify.song || "Spotify";
+  activityArtist.innerText = spotify.artist || "";
+  activityCover.src = spotify.album_art_url || "";
+  activityCover.style.display = "block";
 
-  const start = spotify.timestamps.start;
-  const end = spotify.timestamps.end;
+  const start = spotify.timestamps?.start;
+  const end = spotify.timestamps?.end;
 
-  const update = () => {
-    const now = Date.now();
-    const total = (end - start) / 1000;
-    const current = (now - start) / 1000;
-    const percent = Math.min(100, (current / total) * 100);
+  if (start && end) {
+    const updateSpotifyProgress = () => {
+      const now = Date.now();
+      const totalSeconds = Math.floor((end - start) / 1000);
+      const currentSeconds = Math.floor((now - start) / 1000);
+      const percent = Math.min(100, Math.max(0, (currentSeconds / totalSeconds) * 100));
 
-    bar.style.width = percent + "%";
-  };
+      progressBar.style.width = `${percent}%`;
+      timeCurrent.innerText = formatTime(currentSeconds);
+      timeTotal.innerText = formatTime(totalSeconds);
+    };
 
-  update();
-  activityInterval = setInterval(update, 1000);
-}
-
-function setOtherActivity(activity) {
-  const name = document.getElementById("activityName");
-  const artist = document.getElementById("activityArtist");
-  const cover = document.getElementById("activityCover");
-
-  name.innerText = activity.name;
-  artist.innerText = activity.details || activity.state || "";
-
-  if (activity.assets?.large_image) {
-    cover.src = `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png`;
-    cover.style.display = "block";
+    updateSpotifyProgress();
+    activityInterval = setInterval(updateSpotifyProgress, 1000);
   } else {
-    cover.style.display = "none";
+    progressBar.style.width = "0%";
+    timeCurrent.innerText = "0:00";
+    timeTotal.innerText = "0:00";
   }
 }
 
-/* =========================
-   MAIN RENDER
-========================= */
+function setOtherActivity(activity) {
+  const activityCard = document.getElementById("activityCard");
+  const activityName = document.getElementById("activityName");
+  const activityArtist = document.getElementById("activityArtist");
+  const activityCover = document.getElementById("activityCover");
+  const progressBar = document.getElementById("progressBar");
+  const timeCurrent = document.getElementById("timeCurrent");
+  const timeTotal = document.getElementById("timeTotal");
+  const spotifyHeader = document.getElementById("spotifyHeader");
+  const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
+  const activityIconFallback = document.getElementById("activityIconFallback");
+
+  activityCard.style.display = "flex";
+  spotifyHeader.style.display = "none";
+  spotifyProgressWrap.style.display = "none";
+
+  activityName.innerText = activity.name || "Activity";
+  activityArtist.innerText = activity.details || activity.state || "";
+
+  const largeImage = activity.assets?.large_image;
+  if (largeImage) {
+    if (largeImage.startsWith("mp:external/")) {
+      activityCover.src = `https://media.discordapp.net/${largeImage.slice(3)}`;
+    } else {
+      activityCover.src = `https://cdn.discordapp.com/app-assets/${activity.application_id}/${largeImage}.png`;
+    }
+
+    activityCover.style.display = "block";
+    activityIconFallback.style.display = "none";
+  } else {
+    activityCover.style.display = "none";
+    activityCover.removeAttribute("src");
+    activityIconFallback.style.display = "flex";
+  }
+
+  progressBar.style.width = "0%";
+  timeCurrent.innerText = "";
+  timeTotal.innerText = "";
+}
 
 function renderDiscordPresence(payload) {
   const user = payload.discord_user;
+  const status = payload.discord_status;
   const activities = payload.activities || [];
   const spotify = payload.spotify;
+  const listeningToSpotify = payload.listening_to_spotify;
 
   const isAnimated = user.avatar && user.avatar.startsWith("a_");
-  const avatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${isAnimated ? "gif" : "png"}`;
+  const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${isAnimated ? "gif" : "png"}`;
 
-  document.getElementById("avatar").src = avatar;
-  document.getElementById("displayName").innerText = user.global_name || user.username;
-  document.getElementById("tag").innerText = "@" + user.username;
-  document.getElementById("dot").className = "status-dot " + payload.discord_status;
+  document.getElementById("avatar").src = avatarUrl;
+  document.getElementById("displayName").innerText = user.global_name ? user.global_name : user.username;
+  document.getElementById("tag").innerText = user.username;
+  document.getElementById("dot").className = "status-dot " + status;
 
   applyAvatarDecoration(user);
   applyCustomStatus(activities);
 
   resetActivityTimer();
 
-  if (payload.listening_to_spotify && spotify) {
+  if (listeningToSpotify && spotify) {
     setSpotifyActivity(spotify);
     return;
   }
 
-  const activity = activities.find(a => a.type === 0);
+  const activity =
+    activities.find(a => a.type === 0) ||
+    activities.find(a => a.type === 1) ||
+    activities.find(a => a.type === 3) ||
+    activities.find(a => a.type === 5);
 
   if (activity) {
     setOtherActivity(activity);
@@ -183,40 +234,121 @@ function renderDiscordPresence(payload) {
   }
 }
 
-/* =========================
-   API + SOCKET
-========================= */
-
 async function loadDiscord() {
-  const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-  const data = await res.json();
-  renderDiscordPresence(data.data);
+  try {
+    const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+    const data = await res.json();
+    renderDiscordPresence(data.data);
+  } catch (e) {
+    console.error("Failed to load Discord data", e);
+  }
 }
 
 function connectLanyard() {
   const socket = new WebSocket("wss://api.lanyard.rest/socket");
 
-  socket.onopen = () => {
+  socket.addEventListener("open", () => {
     socket.send(JSON.stringify({
       op: 2,
-      d: { subscribe_to_id: userId }
+      d: {
+        subscribe_to_id: userId
+      }
     }));
-  };
+  });
 
-  socket.onmessage = (event) => {
+  socket.addEventListener("message", (event) => {
     const payload = JSON.parse(event.data);
 
-    if (payload.t === "INIT_STATE" || payload.t === "PRESENCE_UPDATE") {
+    if (payload.op === 1) {
+      socket.send(JSON.stringify({ op: 3 }));
+      return;
+    }
+
+    if (payload.t === "INIT_STATE" && payload.d) {
       renderDiscordPresence(payload.d);
     }
-  };
 
-  socket.onclose = () => setTimeout(connectLanyard, 3000);
+    if (payload.t === "PRESENCE_UPDATE" && payload.d) {
+      renderDiscordPresence(payload.d);
+    }
+  });
+
+  socket.addEventListener("close", () => {
+    setTimeout(connectLanyard, 3000);
+  });
+
+  socket.addEventListener("error", () => {
+    socket.close();
+  });
 }
 
-/* =========================
-   INIT
-========================= */
+const header = document.getElementById("siteHeader");
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 8);
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const siteNav = document.getElementById("siteNav");
+
+menuToggle.addEventListener("click", () => {
+  siteNav.classList.toggle("open");
+  menuToggle.classList.toggle("active");
+
+  const expanded = siteNav.classList.contains("open");
+  menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+});
+
+siteNav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    siteNav.classList.remove("open");
+    menuToggle.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
+  });
+});
+
+const socialLinks = document.querySelectorAll(".icons a");
+
+socialLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    setTimeout(() => link.blur(), 0);
+  });
+
+  link.addEventListener("mouseup", () => link.blur());
+  link.addEventListener("touchend", () => link.blur());
+});
+
+window.addEventListener("pageshow", () => {
+  socialLinks.forEach(link => link.blur());
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    socialLinks.forEach(link => link.blur());
+  }
+});
+
+document.addEventListener("contextmenu", function(e) {
+  if (e.target.tagName === "IMG" && !e.target.closest(".logo")) {
+    e.preventDefault();
+  }
+});
+
+document.querySelectorAll("img").forEach(img => {
+  if (img.closest(".logo")) return;
+
+  img.addEventListener("dragstart", e => e.preventDefault());
+  img.addEventListener("touchstart", e => e.preventDefault(), { passive: false });
+  img.addEventListener("mousedown", e => {
+    if (e.button === 2) e.preventDefault();
+  });
+});
 
 loadDiscord();
 connectLanyard();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+});
