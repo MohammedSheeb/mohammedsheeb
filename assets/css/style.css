@@ -1,9 +1,3 @@
-@font-face {
-  font-family: 'PUBGM';
-  src: url('../fonts/HeadlineNo45') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 @import url("./abstracts/variables.css");
 @import url("./abstracts/fonts.css");
