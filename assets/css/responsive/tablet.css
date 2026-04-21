@@ -1,0 +1,24 @@
+@media (min-width:768px){
+  .pubgm-image{
+    max-width:800px;
+  }
+}
+
+@media (min-width:1200px){
+  .container{
+    max-width:var(--container-wide);
+    padding:0 36px;
+  }
+
+  .header-inner{
+    gap:32px;
+  }
+
+  .nav{
+    gap:22px;
+  }
+
+  .pubgm-image{
+    max-width:1000px;
+  }
+}
