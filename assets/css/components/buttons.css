@@ -1,0 +1,23 @@
+.pubgm-btn{
+  display:inline-block;
+  padding:10px 22px;
+  border-radius:var(--radius-pill);
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+  background:linear-gradient(135deg,#e50914,#ff2a36);
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(229,9,20,0.3);
+  transition:all var(--transition-normal);
+}
+
+.pubgm-btn:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:
+    0 10px 25px rgba(229,9,20,0.4),
+    0 0 18px rgba(229,9,20,0.25);
+}
+
+.pubgm-btn:active{
+  transform:scale(0.95);
+}
