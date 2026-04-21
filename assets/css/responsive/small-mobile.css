@@ -1,0 +1,197 @@
+@media (max-width:480px){
+  .container{
+    padding:0 16px;
+  }
+
+  .logo-img{
+    height:46px;
+  }
+
+  .hero{
+    padding:40px 14px 16px;
+  }
+
+  .hero img{
+    width:96px;
+    height:96px;
+    margin-bottom:12px;
+  }
+
+  .hero h1{
+    font-size:24px;
+  }
+
+  .hero-line{
+    width:92px;
+  }
+
+  .section-heading{
+    margin-top:22px;
+  }
+
+  .section-heading h2{
+    font-size:24px;
+  }
+
+  .about-card{
+    padding:18px;
+    border-radius:18px;
+  }
+
+  .about-card-header{
+    font-size:18px;
+  }
+
+  .about-subtitle{
+    font-size:17px;
+  }
+
+  .about-text{
+    font-size:14px;
+    line-height:1.8;
+  }
+
+  .discord-title{
+    font-size:16px;
+    padding:0 2px;
+  }
+
+  .discord-card{
+    padding:18px;
+    border-radius:18px;
+  }
+
+  .profile{
+    gap:12px;
+  }
+
+  .profile > div{
+    transform:translateY(6px);
+  }
+
+  .avatar{
+    width:72px;
+    height:72px;
+    transform:translateY(-4px);
+  }
+
+  .status-dot{
+    width:16px;
+    height:16px;
+  }
+
+  .display-name{
+    font-size:22px;
+    margin-bottom:6px;
+  }
+
+  .chips{
+    gap:8px;
+  }
+
+  .chips .chip{
+    font-size:13px;
+  }
+
+  .discord-divider{
+    margin:12px 0;
+  }
+
+  .custom-status{
+    font-size:13px;
+    margin-bottom:12px;
+  }
+
+  .activity-card{
+    padding:12px;
+    border-radius:16px;
+  }
+
+  .spotify-header{
+    font-size:12px;
+    margin-bottom:10px;
+  }
+
+  .spotify-header i{
+    font-size:14px;
+  }
+
+  .activity-cover,
+  .activity-icon-fallback{
+    width:58px;
+    height:58px;
+  }
+
+  .activity-icon-fallback i{
+    font-size:26px;
+  }
+
+  .activity-name{
+    font-size:14px;
+  }
+
+  .activity-artist{
+    font-size:11px;
+  }
+
+  .progress{
+    height:5px;
+  }
+
+  .time{
+    font-size:10px;
+  }
+
+  .section-divider{
+    width:100px;
+    margin:28px auto;
+  }
+
+  .social h2{
+    font-size:20px;
+  }
+
+  .icons-wrap{
+    padding:4px 8px 6px;
+  }
+
+  .icons{
+    gap:6px;
+  }
+
+  .icons a{
+    border-radius:12px;
+    font-size:18px;
+  }
+
+  footer{
+    padding:20px 12px 24px;
+    margin-top:32px;
+  }
+
+  footer::before{
+    width:70px;
+  }
+}
+
+@media (max-width:360px){
+  .icons-wrap{
+    padding:4px 6px 6px;
+  }
+
+  .icons{
+    gap:5px;
+  }
+
+  .icons a{
+    font-size:16px;
+  }
+
+  .display-name{
+    font-size:20px;
+  }
+
+  .chips .chip{
+    font-size:12px;
+  }
+}
