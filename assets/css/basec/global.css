@@ -15,7 +15,7 @@ body::before{
   position:fixed;
   inset:0;
   z-index:-2;
-  background:#000 url("../images/backgrounds/bg-vertical.jpg") center/cover no-repeat;
+  background:#000 url("../../images/backgrounds/vertical.jpg") center/cover no-repeat;
 }
 
 body::after{
@@ -42,6 +42,6 @@ img{
 
 @media (orientation: landscape), (min-width:768px){
   body::before{
-    background:#000 url("../images/backgrounds/bg-horizontal.jpg") center/cover no-repeat;
+    background:#000 url("../../images/backgrounds/horizontal.jpg") center/cover no-repeat;
   }
 }
