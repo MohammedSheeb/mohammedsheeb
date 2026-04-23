@@ -33,7 +33,7 @@ function setFallbackActivity() {
   activityCover.style.display = "none";
   activityCover.removeAttribute("src");
 
-  activityIconFallback.innerHTML = '<i class="fas fa-gamepad" aria-hidden="true"></i>';
+  activityIconFallback.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
   activityIconFallback.style.display = "flex";
 
   progressBar.style.width = "0%";
@@ -112,10 +112,9 @@ function setOtherActivity(activity) {
   spotifyProgressWrap.style.display = "none";
 
   activityName.innerText = activity.name || "Activity";
-  activityArtist.innerText = activity.details || activity.state || "Active now";
+  activityArtist.innerText = activity.details || activity.state || "";
 
   const largeImage = activity.assets?.large_image;
-
   if (largeImage) {
     if (largeImage.startsWith("mp:external/")) {
       activityCover.src = `https://media.discordapp.net/${largeImage.slice(3)}`;
@@ -128,7 +127,7 @@ function setOtherActivity(activity) {
   } else {
     activityCover.style.display = "none";
     activityCover.removeAttribute("src");
-    activityIconFallback.innerHTML = '<i class="fas fa-gamepad" aria-hidden="true"></i>';
+    activityIconFallback.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
     activityIconFallback.style.display = "flex";
   }
 
