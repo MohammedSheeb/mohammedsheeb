@@ -33,8 +33,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400..700;1,400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B6TC2WJ9QJ"></script>
@@ -180,18 +180,10 @@
       >
         <section class="discord-card reveal delay-4">
           <div class="profile">
-            <div class="avatar-shell">
-              <div class="avatar">
-                <img id="avatar" src="" alt="Discord avatar" />
-              </div>
-
-              <img id="avatarFrame" class="avatar-frame" src="" alt="" hidden />
-              <span
-                id="dot"
-                class="status-indicator"
-                data-status="offline"
-                aria-label="Invisible"
-              ></span>
+            <div class="avatar">
+              <img id="avatar" src="" alt="Discord avatar" />
+              <img id="avatarFrame" class="avatar-frame" src="" alt="" style="display:none;" />
+              <div id="dot" class="status-dot offline"></div>
             </div>
 
             <div class="profile-meta">
@@ -284,11 +276,6 @@
     </div>
   </main>
 
-  <script defer src="/assets/js/utils.js"></script>
-  <script defer src="/assets/js/activity.js"></script>
-  <script defer src="/assets/js/discord.js"></script>
-  <script defer src="/assets/js/nav.js"></script>
-  <script defer src="/assets/js/social.js"></script>
-  <script defer src="/assets/js/main.js"></script>
+  <script defer src="/assets/js/script.js"></script>
 </body>
 </html>
