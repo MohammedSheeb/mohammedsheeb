@@ -1,69 +1,64 @@
 .about-card{
   max-width:760px;
   margin:22px auto 0;
-  background:linear-gradient(180deg, rgba(8,8,12,0.76), rgba(7,7,10,0.66));
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:30px;
-  padding:30px;
+  background:rgba(8,8,8,0.72);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:24px;
+  padding:28px;
   box-shadow:
     var(--shadow-card),
     inset 0 1px 0 rgba(255,255,255,0.03);
   text-align:left;
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
 }
 
 .discord-card{
   max-width:760px;
   margin:10px auto 0;
-  padding:26px;
-  border-radius:30px;
+  padding:22px;
+  border-radius:26px;
   position:relative;
   overflow:hidden;
   cursor:pointer;
-  border:1px solid rgba(255,255,255,0.08);
+  background:
+    radial-gradient(circle at top right, rgba(255,170,170,0.10), transparent 26%),
+    radial-gradient(circle at top left, rgba(255,120,0,0.07), transparent 18%),
+    linear-gradient(135deg, rgba(22,12,16,0.78), rgba(14,10,12,0.68));
+  border:1px solid rgba(255,255,255,0.09);
   box-shadow:
     var(--shadow-card-strong),
     inset 0 1px 0 rgba(255,255,255,0.03);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
   transition:
     transform 0.28s ease,
     box-shadow 0.28s ease,
     border-color 0.28s ease;
   transform-origin:center;
-  background:linear-gradient(135deg, rgba(20,11,16,0.78), rgba(11,9,16,0.72));
-}
-
-.discord-card-bg{
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 0% 0%, rgba(229,9,20,0.12), transparent 30%),
-    radial-gradient(circle at 100% 0%, rgba(88,101,242,0.10), transparent 32%),
-    radial-gradient(circle at 50% 100%, rgba(255,255,255,0.03), transparent 28%);
-  pointer-events:none;
 }
 
 .discord-card:hover{
-  transform:translateY(-2px);
+  transform:scale(1.03);
   border-color:rgba(255,255,255,0.12);
   box-shadow:
-    0 26px 60px rgba(0,0,0,0.52),
-    0 0 26px rgba(229,9,20,0.10);
+    0 26px 52px rgba(0,0,0,0.50),
+    0 0 24px rgba(229,9,20,0.10);
+}
+
+.discord-card:active{
+  transform:scale(1.06);
 }
 
 .activity-card{
   display:flex;
   flex-direction:column;
   gap:0;
-  padding:16px;
-  border-radius:22px;
-  background:rgba(0,0,0,0.34);
-  border:1px solid rgba(255,255,255,0.07);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.28);
-  position:relative;
-  z-index:1;
+  padding:14px;
+  border-radius:18px;
+  background:rgba(0,0,0,0.45);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
 }
