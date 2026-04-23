@@ -816,9 +816,9 @@ header.scrolled{
   }
 
   .avatar-frame{
-    width:88px;
-    height:88px;
-  }
+  width:94px;
+  height:94px;
+}
 
   .display-name{
     font-size:clamp(1.55rem, 5vw, 2rem);
