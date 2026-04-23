@@ -19,6 +19,10 @@ function setFallbackActivity() {
   const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
   const activityIconFallback = document.getElementById("activityIconFallback");
 
+  if (!activityCard || !activityName || !activityArtist || !activityCover || !progressBar || !timeCurrent || !timeTotal || !spotifyHeader || !spotifyProgressWrap || !activityIconFallback) {
+    return;
+  }
+
   activityCard.style.display = "flex";
   spotifyHeader.style.display = "none";
   spotifyProgressWrap.style.display = "none";
@@ -48,6 +52,10 @@ function setSpotifyActivity(spotify) {
   const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
   const activityIconFallback = document.getElementById("activityIconFallback");
 
+  if (!activityCard || !activityName || !activityArtist || !activityCover || !progressBar || !timeCurrent || !timeTotal || !spotifyHeader || !spotifyProgressWrap || !activityIconFallback) {
+    return;
+  }
+
   activityCard.style.display = "flex";
   spotifyHeader.style.display = "flex";
   spotifyProgressWrap.style.display = "block";
@@ -61,11 +69,11 @@ function setSpotifyActivity(spotify) {
   const start = spotify.timestamps?.start;
   const end = spotify.timestamps?.end;
 
-  if (start && end) {
+  if (start && end && end > start) {
     const updateSpotifyProgress = () => {
       const now = Date.now();
-      const totalSeconds = Math.floor((end - start) / 1000);
-      const currentSeconds = Math.floor((now - start) / 1000);
+      const totalSeconds = Math.max(1, Math.floor((end - start) / 1000));
+      const currentSeconds = Math.max(0, Math.floor((now - start) / 1000));
       const percent = Math.min(100, Math.max(0, (currentSeconds / totalSeconds) * 100));
 
       progressBar.style.width = `${percent}%`;
@@ -94,6 +102,10 @@ function setOtherActivity(activity) {
   const spotifyProgressWrap = document.getElementById("spotifyProgressWrap");
   const activityIconFallback = document.getElementById("activityIconFallback");
 
+  if (!activityCard || !activityName || !activityArtist || !activityCover || !progressBar || !timeCurrent || !timeTotal || !spotifyHeader || !spotifyProgressWrap || !activityIconFallback) {
+    return;
+  }
+
   activityCard.style.display = "flex";
   spotifyHeader.style.display = "none";
   spotifyProgressWrap.style.display = "none";
@@ -105,7 +117,7 @@ function setOtherActivity(activity) {
   if (largeImage) {
     if (largeImage.startsWith("mp:external/")) {
       activityCover.src = `https://media.discordapp.net/${largeImage.slice(3)}`;
-    } else {
+    } else if (activity.application_id) {
       activityCover.src = `https://cdn.discordapp.com/app-assets/${activity.application_id}/${largeImage}.png`;
     }
 
