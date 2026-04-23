@@ -37,7 +37,7 @@ function applyCustomStatus(activities) {
 
   if (!customEl || !customEmojiEl || !customTextEl) return;
 
-  const custom = activities.find(a => a.type === 4);
+  const custom = activities.find((a) => a.type === 4);
 
   if (custom) {
     customTextEl.innerText = custom.state || "";
@@ -66,19 +66,29 @@ function applyCustomStatus(activities) {
 }
 
 function renderDiscordPresence(payload) {
+  if (!payload || !payload.discord_user) return;
+
   const user = payload.discord_user;
-  const status = payload.discord_status;
+  const status = payload.discord_status || "offline";
   const activities = payload.activities || [];
   const spotify = payload.spotify;
   const listeningToSpotify = payload.listening_to_spotify;
 
-  const isAnimated = user.avatar && user.avatar.startsWith("a_");
-  const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${isAnimated ? "gif" : "png"}`;
+  const avatarEl = document.getElementById("avatar");
+  const displayNameEl = document.getElementById("displayName");
+  const tagEl = document.getElementById("tag");
+  const dotEl = document.getElementById("dot");
 
-  document.getElementById("avatar").src = avatarUrl;
-  document.getElementById("displayName").innerText = user.global_name ? user.global_name : user.username;
-  document.getElementById("tag").innerText = user.username;
-  document.getElementById("dot").className = "status-dot " + status;
+  if (!avatarEl || !displayNameEl || !tagEl || !dotEl) return;
+
+  const avatarUrl = user.avatar
+    ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=256`
+    : "https://cdn.discordapp.com/embed/avatars/0.png";
+
+  avatarEl.src = avatarUrl;
+  displayNameEl.innerText = user.global_name || user.username || "Unknown";
+  tagEl.innerText = `@${user.username || "username"}`;
+  dotEl.className = `status-dot ${status}`;
 
   applyAvatarDecoration(user);
   applyCustomStatus(activities);
@@ -91,10 +101,10 @@ function renderDiscordPresence(payload) {
   }
 
   const activity =
-    activities.find(a => a.type === 0) ||
-    activities.find(a => a.type === 1) ||
-    activities.find(a => a.type === 3) ||
-    activities.find(a => a.type === 5);
+    activities.find((a) => a.type === 0) ||
+    activities.find((a) => a.type === 1) ||
+    activities.find((a) => a.type === 3) ||
+    activities.find((a) => a.type === 5);
 
   if (activity) {
     setOtherActivity(activity);
@@ -107,9 +117,13 @@ async function loadDiscord() {
   try {
     const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
     const data = await res.json();
-    renderDiscordPresence(data.data);
+
+    if (data?.success && data.data) {
+      renderDiscordPresence(data.data);
+    }
   } catch (e) {
     console.error("Failed to load Discord data", e);
+    setFallbackActivity();
   }
 }
 
@@ -133,11 +147,7 @@ function connectLanyard() {
       return;
     }
 
-    if (payload.t === "INIT_STATE" && payload.d) {
-      renderDiscordPresence(payload.d);
-    }
-
-    if (payload.t === "PRESENCE_UPDATE" && payload.d) {
+    if ((payload.t === "INIT_STATE" || payload.t === "PRESENCE_UPDATE") && payload.d) {
       renderDiscordPresence(payload.d);
     }
   });
