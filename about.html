@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Mohammed Sheeb</title>
+
+  <meta name="description" content="About Mohammed Sheeb" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mohammedsheeb.online/about.html" />
+
+  <meta property="og:title" content="About | Mohammed Sheeb" />
+  <meta property="og:description" content="Learn more about Mohammed Sheeb" />
+  <meta property="og:url" content="https://mohammedsheeb.online/about.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://mohammedsheeb.online/assets/images/logos/logo.png?v=30" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="About | Mohammed Sheeb" />
+  <meta name="twitter:description" content="Learn more about Mohammed Sheeb" />
+  <meta name="twitter:image" content="https://mohammedsheeb.online/assets/images/logos/logo.png?v=30" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/logos/Logo.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logos/logo.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/images/logos/logo.png" />
+  <link rel="apple-touch-icon" href="assets/images/logos/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <style>
+    .page-hero{
+      min-height: 48vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:110px 20px 50px;
+      position:relative;
+      z-index:1;
+    }
+
+    .page-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(229,9,20,0.18), transparent 30%),
+        linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.35));
+      pointer-events:none;
+    }
+
+    .page-hero-inner{
+      position:relative;
+      z-index:1;
+      width:min(100%, 900px);
+    }
+
+    .page-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:999px;
+      background:rgba(255,255,255,0.04);
+      color:#d8d8d8;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:0.8px;
+      text-transform:uppercase;
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      margin-bottom:18px;
+    }
+
+    .page-kicker i{
+      color:var(--accent);
+    }
+
+    .page-title{
+      font-size:clamp(2.4rem, 8vw, 4.6rem);
+      line-height:1.02;
+      font-weight:900;
+      letter-spacing:-0.04em;
+      text-shadow:0 3px 20px rgba(0,0,0,0.45);
+      margin-bottom:16px;
+    }
+
+    .page-title span{
+      color:var(--accent);
+    }
+
+    .page-desc{
+      width:min(100%, 720px);
+      margin:0 auto;
+      color:#d7d7d7;
+      font-size:clamp(1rem, 3.7vw, 1.2rem);
+      line-height:1.75;
+      font-weight:600;
+    }
+
+    .about-grid{
+      width:min(100%, 1120px);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .page-card{
+      position:relative;
+      border-radius:28px;
+      padding:28px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(135deg, rgba(12,12,16,0.78), rgba(8,8,12,0.66));
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.42),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      overflow:hidden;
+    }
+
+    .page-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at top right, rgba(229,9,20,0.10), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.03), transparent 20%);
+      pointer-events:none;
+    }
+
+    .card-head{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:18px;
+      font-size:22px;
+      font-weight:800;
+      color:#fff;
+      position:relative;
+      z-index:1;
+    }
+
+    .card-head i{
+      color:var(--accent);
+      font-size:18px;
+    }
+
+    .card-text{
+      color:#dddddd;
+      font-size:17px;
+      line-height:1.9;
+      font-weight:600;
+      position:relative;
+      z-index:1;
+    }
+
+    .info-list{
+      display:grid;
+      gap:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .info-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .info-item i{
+      width:20px;
+      text-align:center;
+      color:var(--accent);
+      font-size:15px;
+      flex-shrink:0;
+    }
+
+    .info-item span{
+      color:#e5e5e5;
+      font-size:15px;
+      font-weight:700;
+      line-height:1.5;
+    }
+
+    .about-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .about-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-width:160px;
+      padding:13px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.04);
+      color:#fff;
+      font-size:14px;
+      font-weight:800;
+      transition:
+        transform .28s ease,
+        background .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease;
+    }
+
+    .about-btn.primary{
+      background:linear-gradient(135deg,#e50914,#ff2a36);
+      border-color:rgba(229,9,20,0.45);
+      box-shadow:0 10px 24px rgba(229,9,20,0.22);
+    }
+
+    .about-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 24px rgba(0,0,0,0.22);
+    }
+
+    .quote-card{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:100%;
+    }
+
+    .quote-box{
+      position:relative;
+      z-index:1;
+      padding:20px;
+      border-radius:22px;
+      background:rgba
