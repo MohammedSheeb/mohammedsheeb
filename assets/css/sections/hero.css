@@ -17,10 +17,10 @@
 }
 
 .hero h1{
-  font-size:40px;
+  font-size:clamp(2rem, 8vw, 40px);
   line-height:1.12;
   font-weight:800;
-  white-space:nowrap;
+  white-space:normal;
   text-shadow:0 3px 14px rgba(0,0,0,0.45);
 }
 
@@ -45,10 +45,10 @@
 }
 
 .section-heading h2{
-  font-size:40px;
+  font-size:clamp(2rem, 8vw, 40px);
   font-weight:800;
   line-height:1.12;
-  white-space:nowrap;
+  white-space:normal;
   text-shadow:0 3px 14px rgba(0,0,0,0.45);
 }
 
