@@ -72,20 +72,21 @@
     align-items:flex-start;
   }
 
-  .avatar-shell{
-    width:84px;
-    height:84px;
-  }
+ .avatar-shell{
+  width:84px;
+  height:84px;
+}
 
-  .avatar{
-    width:70px;
-    height:70px;
-  }
+.avatar{
+  inset:9px;
+}
 
-  .status-dot{
-    width:16px;
-    height:16px;
-  }
+.status-indicator{
+  width:16px;
+  height:16px;
+  right:8px;
+  bottom:8px;
+}
 
   .username-row{
     gap:8px;
