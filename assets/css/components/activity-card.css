@@ -3,10 +3,12 @@
   align-items:center;
   justify-content:flex-start;
   gap:8px;
-  font-size:13px;
-  font-weight:600;
+  font-size:12px;
+  font-weight:700;
   color:#d9d9d9;
   margin-bottom:12px;
+  letter-spacing:0.7px;
+  text-transform:uppercase;
 }
 
 .spotify-header i{
@@ -17,32 +19,34 @@
 .activity-main{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
   width:100%;
 }
 
 .activity-cover{
-  width:64px;
-  height:64px;
-  border-radius:10px;
+  width:72px;
+  height:72px;
+  border-radius:16px;
   object-fit:cover;
   flex-shrink:0;
   display:block;
+  box-shadow:0 10px 20px rgba(0,0,0,0.22);
 }
 
 .activity-icon-fallback{
-  width:64px;
-  height:64px;
-  border-radius:14px;
-  background:rgba(255,255,255,0.05);
+  width:72px;
+  height:72px;
+  border-radius:18px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
   display:flex;
   align-items:center;
   justify-content:center;
   flex-shrink:0;
+  border:1px solid rgba(255,255,255,0.06);
 }
 
 .activity-icon-fallback i{
-  font-size:30px;
+  font-size:28px;
   color:#f1f1f1;
 }
 
@@ -54,9 +58,18 @@
   justify-content:center;
 }
 
-.activity-name{
-  font-size:15px;
+.activity-label{
+  font-size:11px;
   font-weight:700;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+  color:#8d93a1;
+  margin-bottom:6px;
+}
+
+.activity-name{
+  font-size:16px;
+  font-weight:800;
   color:#fff;
   line-height:1.35;
   margin-bottom:4px;
@@ -64,14 +77,14 @@
 }
 
 .activity-artist{
-  font-size:12px;
-  color:#aaa;
-  line-height:1.4;
+  font-size:13px;
+  color:#b1b6c2;
+  line-height:1.45;
   word-break:break-word;
 }
 
 .spotify-progress-wrap{
-  margin-top:12px;
+  margin-top:14px;
   width:100%;
 }
 
@@ -86,7 +99,7 @@
 .progress-bar{
   height:100%;
   width:0%;
-  background:#f1f1f1;
+  background:linear-gradient(90deg, #fff, #d9d9d9);
   border-radius:var(--radius-pill);
 }
 
@@ -96,5 +109,5 @@
   gap:8px;
   font-size:11px;
   color:#b8b8b8;
-  margin-top:6px;
+  margin-top:7px;
 }
