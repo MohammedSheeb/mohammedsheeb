@@ -20,6 +20,10 @@
   height:86px;
   position:relative;
   flex-shrink:0;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .avatar #avatar{
@@ -27,6 +31,7 @@
   height:100%;
   border-radius:50%;
   object-fit:cover;
+  object-position:center;
   display:block;
   position:relative;
   z-index:1;
@@ -35,11 +40,11 @@
 
 .avatar-frame{
   position:absolute;
-  top:-9px;
-  left:-9px;
-  width:calc(100% + 18px);
-  height:calc(100% + 18px);
+  inset:-8px;
+  width:calc(100% + 16px);
+  height:calc(100% + 16px);
   object-fit:contain;
+  object-position:center;
   pointer-events:none;
   z-index:2;
 }
@@ -49,8 +54,8 @@
   height:18px;
   border-radius:50%;
   position:absolute;
-  bottom:3px;
-  right:3px;
+  bottom:2px;
+  right:2px;
   border:3px solid #15121a;
   z-index:3;
   box-shadow:0 0 10px rgba(0,0,0,0.28);
