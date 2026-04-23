@@ -7,7 +7,7 @@ body{
   overflow-x:hidden;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
-  background:#000;
+  background:var(--bg);
 }
 
 body::before{
@@ -33,11 +33,22 @@ a{
 }
 
 img{
+  max-width:100%;
+  height:auto;
   -webkit-user-drag:none;
   user-select:none;
   -webkit-touch-callout:none;
   -webkit-tap-highlight-color:transparent;
-  touch-action:pan-y;
+}
+
+main{
+  display:block;
+}
+
+a:focus-visible,
+button:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:3px;
 }
 
 @media (orientation: landscape), (min-width:768px){
