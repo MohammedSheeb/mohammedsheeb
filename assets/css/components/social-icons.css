@@ -77,8 +77,7 @@
 }
 
 .icons a:focus,
-.icons a:focus-visible,
-.icons a:visited{
+.icons a:focus-visible{
   background:rgba(17,17,17,0.92);
   color:var(--accent);
   border-color:rgba(255,255,255,0.08);
@@ -88,7 +87,6 @@
 }
 
 .icons a:focus i,
-.icons a:focus-visible i,
-.icons a:visited i{
+.icons a:focus-visible i{
   transform:none;
 }
