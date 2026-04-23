@@ -6,19 +6,36 @@
 
 @media (min-width:1200px){
   .container{
-    max-width:var(--container-wide);
-    padding:0 36px;
+    max-width:1280px;
+    padding:0 28px;
   }
 
   .header-inner{
-    gap:32px;
+    gap:24px;
   }
 
   .nav{
-    gap:22px;
+    gap:18px;
+  }
+
+  .about-card,
+  .discord-card{
+    padding:20px;
   }
 
   .pubgm-image{
-    max-width:1000px;
+    max-width:880px;
+  }
+}
+
+@media (min-width:1440px){
+  .container{
+    max-width:1320px;
+  }
+}
+
+@media (min-width:1920px){
+  .container{
+    max-width:1360px;
   }
 }
