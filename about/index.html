@@ -24,11 +24,10 @@
   <meta name="twitter:description" content="Learn more about Mohammed Sheeb" />
   <meta name="twitter:image" content="https://mohammedsheeb.online/assets/images/logos/logo.png?v=40" />
 
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/Logo.svg" />
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logos/logo.png" />
-<link rel="icon" type="image/png" sizes="64x64" href="../assets/images/logos/logo.png" />
-<link rel="apple-touch-icon" href="../assets/images/logos/logo.png" />
-<link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logos/Logo.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logos/logo.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/logos/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/images/logos/logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,7 +35,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 
   <style>
     .subpage-hero{
@@ -250,6 +249,7 @@
         background .28s ease,
         border-color .28s ease,
         box-shadow .28s ease;
+      text-decoration:none;
     }
 
     .about-btn.primary{
@@ -328,9 +328,9 @@
   <header id="siteHeader">
     <div class="container header-inner">
       <div class="logo">
-        <a href="https://mohammedsheeb.online/" aria-label="Mohammed Sheeb Home">
+        <a href="/" aria-label="Mohammed Sheeb Home">
           <img
-            src="assets/images/logos/logo.png"
+            src="/assets/images/logos/Logo.svg"
             alt="Mohammed Sheeb Logo"
             class="logo-img"
             width="288"
@@ -339,15 +339,22 @@
         </a>
       </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav" type="button">
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="siteNav"
+        type="button"
+      >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <nav class="nav" id="siteNav" aria-label="Primary Navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
+        <a href="/">Home</a>
+        <a href="/about/">About Me</a>
       </nav>
     </div>
   </header>
@@ -396,7 +403,7 @@
           </p>
 
           <div class="about-actions">
-            <a href="index.html" class="about-btn primary">
+            <a href="/" class="about-btn primary">
               <i class="fas fa-house"></i>
               Back Home
             </a>
@@ -452,13 +459,27 @@
 
         <div class="icons-wrap">
           <div class="icons">
-            <a href="mailto:mohammedsheeb1@gmail.com" aria-label="Email Mohammed Sheeb"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-            <a href="https://discord.gg/ppbMFFxSFF" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/MohammedSheeb" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-            <a href="https://www.instagram.com/mohammedsheeb" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-            <a href="https://youtube.com/@MohammedSheeb" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-            <a href="https://www.tiktok.com/@mohammedsheeb" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
-            <a href="https://x.com/MohammedSheeb_" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+            <a href="mailto:mohammedsheeb1@gmail.com" aria-label="Email Mohammed Sheeb">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </a>
+            <a href="https://discord.gg/ppbMFFxSFF" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+              <i class="fab fa-discord" aria-hidden="true"></i>
+            </a>
+            <a href="https://facebook.com/MohammedSheeb" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/mohammedsheeb" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="https://youtube.com/@MohammedSheeb" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <i class="fab fa-youtube" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.tiktok.com/@mohammedsheeb" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <i class="fab fa-tiktok" aria-hidden="true"></i>
+            </a>
+            <a href="https://x.com/MohammedSheeb_" target="_blank" rel="noopener noreferrer" aria-label="X">
+              <i class="fab fa-x-twitter" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
       </section>
@@ -469,8 +490,8 @@
     </div>
   </main>
 
-  <script defer src="assets/js/nav.js"></script>
-  <script defer src="assets/js/social.js"></script>
+  <script defer src="/assets/js/nav.js"></script>
+  <script defer src="/assets/js/social.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const yearEl = document.getElementById("year");
