@@ -93,6 +93,7 @@
 .time{
   display:flex;
   justify-content:space-between;
+  gap:8px;
   font-size:11px;
   color:#b8b8b8;
   margin-top:6px;
