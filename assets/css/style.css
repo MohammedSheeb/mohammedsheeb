@@ -446,8 +446,8 @@ header.scrolled{
   position:absolute !important;
   top:50% !important;
   left:50% !important;
-  width:100px !important;
-  height:100px !important;
+  width:94px !important;
+  height:94px !important;
   min-width:0 !important;
   min-height:0 !important;
   max-width:none !important;
@@ -788,8 +788,8 @@ header.scrolled{
   }
 
   .avatar-frame{
-    width:100px !important;
-    height:100px !important;
+    width:94px !important;
+    height:94px !important;
   }
 
   .status-dot{
@@ -909,8 +909,8 @@ header.scrolled{
   }
 
   .avatar-frame{
-    width:100px !important;
-    height:100px !important;
+    width:94px !important;
+    height:94px !important;
   }
 
   .status-dot{
