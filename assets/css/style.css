@@ -961,10 +961,10 @@ header.scrolled{
   }
 
   .avatar-frame{
-    width:122px !important;
-    height:122px !important;
-    min-width:122px !important;
-    min-height:122px !important;
+    width:86px !important;
+    height:86px !important;
+    min-width:86px !important;
+    min-height:86px !important;
   }
 
   .display-name{
