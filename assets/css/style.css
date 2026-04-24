@@ -19,7 +19,7 @@
 @font-face{
   font-family:'Headliner';
   src:url('../fonts/HeadlinerNo45.ttf') format('truetype');
-  font-weight:400;
+  font-weight:700;
   font-style:normal;
   font-display:swap;
 }
@@ -140,7 +140,7 @@ header.scrolled{
 }
 
 .logo-img{
-  height:42px;
+  height:46px;
   width:auto;
   display:block;
   object-fit:contain;
@@ -766,7 +766,7 @@ header.scrolled{
   }
 
   .logo-img{
-    height:40px;
+    height:46px;
   }
 
   .hero{
@@ -902,7 +902,7 @@ header.scrolled{
   }
 
   .logo-img{
-    height:36px;
+    height:40px;
   }
 
   .menu-toggle{
