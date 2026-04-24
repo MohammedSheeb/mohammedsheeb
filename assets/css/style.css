@@ -12,7 +12,8 @@
   --container-width:1240px;
 
   --avatar-size:clamp(80px, 7vw, 104px);
-  --frame-size:calc(var(--avatar-size) * 1.19);
+  --frame-size:calc(var(--avatar-size) * 1.205);
+  --status-size:clamp(18px, calc(var(--avatar-size) * .23), 23px);
 }
 
 @font-face{
@@ -514,12 +515,8 @@ header.scrolled{
 }
 
 .status-dot{
-  width:calc(var(--avatar-size) * .23);
-  height:calc(var(--avatar-size) * .23);
-  min-width:18px;
-  min-height:18px;
-  max-width:23px;
-  max-height:23px;
+  width:var(--status-size);
+  height:var(--status-size);
   border-radius:50%;
   position:absolute;
   right:0;
@@ -835,6 +832,17 @@ header.scrolled{
   opacity:.98;
 }
 
+.site-footer p,
+.site-footer p *{
+  font-size:inherit !important;
+  line-height:inherit !important;
+}
+
+.site-footer p::first-letter{
+  font-size:1.12em;
+  line-height:1;
+}
+
 @media (max-width:1023px){
   .header-inner{
     min-height:64px;
@@ -931,6 +939,8 @@ header.scrolled{
 @media (max-width:480px){
   :root{
     --avatar-size:80px;
+    --frame-size:calc(var(--avatar-size) * 1.205);
+    --status-size:20px;
   }
 
   .container{
@@ -978,7 +988,9 @@ header.scrolled{
   }
 
   .status-dot{
-    border-width:3.5px;
+    border-width:4px;
+    right:0;
+    bottom:1px;
   }
 
   .display-name{
