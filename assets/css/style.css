@@ -822,10 +822,10 @@ header.scrolled{
   }
 
   .avatar-frame{
-    width:132px !important;
-    height:132px !important;
-    min-width:132px !important;
-    min-height:132px !important;
+    width:96px !important;
+    height:96px !important;
+    min-width:96px !important;
+    min-height:96px !important;
   }
 
   .display-name{
@@ -945,10 +945,10 @@ header.scrolled{
   }
 
   .avatar-frame{
-    width:86px !important;
-    height:86px !important;
-    min-width:86px !important;
-    min-height:86px !important;
+    width:96px !important;
+    height:96px !important;
+    min-width:96px !important;
+    min-height:96px !important;
   }
 
   .display-name{
