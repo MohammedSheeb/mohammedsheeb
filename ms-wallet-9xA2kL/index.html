@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lost Wallet | Mohammed Sheeb</title>
+
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive" />
+
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logos/Logo.svg" />
+  <link rel="apple-touch-icon" href="/assets/images/logos/logo.png" />
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      background:#f5f5f7;
+      color:#111;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    header{
+      width:100%;
+      height:66px;
+      background:#f5f5f7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 20px;
+    }
+
+    .header-inner{
+      width:100%;
+      max-width:760px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      direction:ltr;
+    }
+
+    .logo-img{
+      height:42px;
+      width:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    .lang-switch{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      direction:ltr;
+      background:rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:999px;
+      padding:5px;
+      flex-shrink:0;
+    }
+
+    .lang-btn{
+      border:0;
+      border-radius:999px;
+      padding:7px 12px;
+      background:transparent;
+      color:#666;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .lang-btn.active{
+      background:#111;
+      color:#fff;
+    }
+
+    .wallet-page{
+      min-height:calc(100vh - 66px);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      padding:52px 22px 0;
+    }
+
+    .wallet-icon{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      margin-bottom:34px;
+      background:
+        radial-gradient(circle at 35% 30%, #fff, #d9d9df 45%, #a9a9b2 100%);
+      box-shadow:
+        inset 0 0 0 14px rgba(255,255,255,.65),
+        0 18px 45px rgba(0,0,0,.14);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:72px;
+    }
+
+    .wallet-title{
+      font-size:clamp(2.1rem, 8vw, 3.25rem);
+      line-height:1.05;
+      font-weight:800;
+      letter-spacing:-.04em;
+      margin-bottom:16px;
+      color:#111;
+    }
+
+    .wallet-info{
+      font-size:clamp(1.22rem, 5vw, 1.8rem);
+      line-height:1.35;
+      color:#555;
+      margin-bottom:46px;
+    }
+
+    .wallet-info strong{
+      color:#333;
+      font-weight:650;
+    }
+
+    .wallet-text{
+      max-width:620px;
+      font-size:clamp(1.12rem, 4.5vw, 1.5rem);
+      line-height:1.55;
+      color:#333;
+      margin-bottom:28px;
+    }
+
+    .wallet-actions{
+      width:100%;
+      max-width:420px;
+      display:grid;
+      gap:14px;
+      margin:18px auto 44px;
+    }
+
+    .wallet-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      border-radius:16px;
+      font-size:18px;
+      font-weight:750;
+      border:1px solid rgba(0,0,0,.08);
+    }
+
+    .wallet-btn.call{
+      background:#007aff;
+      color:#fff;
+    }
+
+    .wallet-btn.location{
+      background:#fff;
+      color:#007aff;
+      box-shadow:0 1px 3px rgba(0,0,0,.08);
+    }
+
+    .wallet-note{
+      max-width:620px;
+      font-size:15px;
+      line-height:1.6;
+      color:#777;
+      margin-bottom:44px;
+    }
+
+    .wallet-footer{
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      margin-right:calc(50% - 50vw);
+      margin-top:auto;
+      background:#eeeeef;
+      padding:28px 22px calc(28px + env(safe-area-inset-bottom));
+      text-align:center;
+      color:#777;
+      font-size:14px;
+    }
+
+    .wallet-footer-inner{
+      width:100%;
+      max-width:760px;
+      margin:0 auto;
+      text-align:center;
+    }
+
+    [dir="rtl"] .wallet-page,
+    [dir="rtl"] .wallet-footer{
+      direction:rtl;
+    }
+
+    [dir="rtl"] .wallet-title{
+      letter-spacing:0;
+    }
+
+    @media(max-width:480px){
+      header{
+        height:62px;
+        padding:0 16px;
+      }
+
+      .logo-img{
+        height:38px;
+      }
+
+      .wallet-page{
+        min-height:calc(100vh - 62px);
+        padding:42px 22px 0;
+      }
+
+      .wallet-icon{
+        width:150px;
+        height:150px;
+        font-size:62px;
+      }
+
+      .wallet-actions{
+        margin-bottom:38px;
+      }
+
+      .lang-btn{
+        padding:6px 10px;
+        font-size:12px;
+      }
+
+      .wallet-footer{
+        padding:26px 18px calc(26px + env(safe-area-inset-bottom));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/" aria-label="Mohammed Sheeb Home">
+        <img src="/assets/images/logos/Logo.svg" alt="Mohammed Sheeb Logo" class="logo-img" />
+      </a>
+
+      <div class="lang-switch" aria-label="Language switcher">
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+        <button class="lang-btn" type="button" data-lang="ar">عربي</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wallet-page">
+    <div class="wallet-icon">💳</div>
+
+    <h1 class="wallet-title" data-i18n="title">Lost Wallet</h1>
+
+    <div class="wallet-info">
+      <span data-i18n="ownerLabel">Owner</span>:
+      <strong>Mohammed Sheeb</strong><br />
+      <span data-i18n="phoneLabel">Phone</span>:
+      <strong>+970566882041</strong>
+    </div>
+
+    <p class="wallet-text" data-i18n="description">
+      This wallet belongs to Mohammed Sheeb. If you found it, please contact me using the button below. I would really appreciate your help returning it safely.
+    </p>
+
+    <div class="wallet-actions">
+      <a class="wallet-btn call" href="tel:+970566882041" data-i18n="callBtn">
+        Call Owner
+      </a>
+
+      <a class="wallet-btn location" href="https://maps.app.goo.gl/KhEdy8MNBgiMYA698" target="_blank" rel="noopener noreferrer" data-i18n="locationBtn">
+        View Return Location
+      </a>
+    </div>
+
+    <p class="wallet-note" data-i18n="note">
+      Please do not share the wallet contents publicly. Contact me directly and I will arrange a safe way to receive it.
+    </p>
+
+    <footer class="wallet-footer">
+      <div class="wallet-footer-inner">
+        <span data-i18n="footer">© 2026 Mohammed Sheeb. Private lost item page.</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const translations = {
+      en: {
+        title: "Lost Wallet",
+        ownerLabel: "Owner",
+        phoneLabel: "Phone",
+        description: "This wallet belongs to Mohammed Sheeb. If you found it, please contact me using the button below. I would really appreciate your help returning it safely.",
+        callBtn: "Call Owner",
+        locationBtn: "View Return Location",
+        note: "Please do not share the wallet contents publicly. Contact me directly and I will arrange a safe way to receive it.",
+        footer: "© 2026 Mohammed Sheeb. Private lost item page."
+      },
+      ar: {
+        title: "محفظة مفقودة",
+        ownerLabel: "المالك",
+        phoneLabel: "رقم الهاتف",
+        description: "هذه المحفظة تعود إلى Mohammed Sheeb. إذا عثرت عليها، الرجاء التواصل معي من خلال الزر بالأسفل. أقدّر مساعدتك في إعادتها بأمان.",
+        callBtn: "اتصل بالمالك",
+        locationBtn: "عرض مكان التسليم",
+        note: "الرجاء عدم نشر محتويات المحفظة. تواصل معي مباشرة وسأرتب طريقة آمنة لاستلامها.",
+        footer: "© 2026 Mohammed Sheeb. صفحة خاصة لغرض مفقود."
+      }
+    };
+
+    function setLanguage(lang) {
+      const selected = translations[lang] ? lang : "en";
+
+      document.documentElement.lang = selected;
+      document.documentElement.dir = selected === "ar" ? "rtl" : "ltr";
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        el.textContent = translations[selected][key];
+      });
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === selected);
+      });
+
+      localStorage.setItem("walletLang", selected);
+    }
+
+    const savedLang = localStorage.getItem("walletLang");
+    const deviceLang = navigator.language && navigator.language.toLowerCase().startsWith("ar")
+      ? "ar"
+      : "en";
+
+    setLanguage(savedLang || deviceLang);
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setLanguage(btn.dataset.lang);
+      });
+    });
+  </script>
+</body>
+</html>
