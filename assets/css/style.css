@@ -168,8 +168,8 @@ header.scrolled{
   display:none;
   width:42px;
   height:42px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.055);
+  border:1px solid rgba(229,9,20,.28);
+  background:rgba(229,9,20,.08);
   border-radius:16px;
   align-items:center;
   justify-content:center;
@@ -177,13 +177,21 @@ header.scrolled{
   position:relative;
   overflow:hidden;
   z-index:3001;
-  transition:transform .25s ease, background .25s ease, border-color .25s ease;
+  box-shadow:0 10px 26px rgba(0,0,0,.28);
+  transition:transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 .menu-toggle:hover{
   transform:scale(1.04);
-  border-color:rgba(255,255,255,.22);
-  background:rgba(255,255,255,.09);
+  border-color:rgba(229,9,20,.42);
+  background:rgba(229,9,20,.13);
+  box-shadow:0 12px 30px rgba(229,9,20,.12);
+}
+
+.menu-toggle.active{
+  background:linear-gradient(135deg, rgba(229,9,20,.95), rgba(255,42,54,.86));
+  border-color:rgba(255,255,255,.18);
+  box-shadow:0 14px 34px rgba(229,9,20,.24);
 }
 
 .menu-toggle span{
@@ -256,11 +264,11 @@ header.scrolled{
 }
 
 .hero-line{
-  width:104px;
+  width:112px;
   height:2px;
   margin:18px auto 0;
   border-radius:999px;
-  background:linear-gradient(to right, transparent, rgba(229,9,20,.38), rgba(255,255,255,.18), rgba(229,9,20,.38), transparent);
+  background:linear-gradient(to right, rgba(229,9,20,0), rgba(229,9,20,.88), rgba(229,9,20,0));
   box-shadow:none;
 }
 
@@ -329,15 +337,15 @@ header.scrolled{
 .section-line,
 .discord-divider,
 .section-divider{
+  height:2px;
   border-radius:999px;
-  background:linear-gradient(to right, transparent, rgba(229,9,20,.22), rgba(255,255,255,.14), rgba(229,9,20,.22), transparent);
+  background:linear-gradient(to right, rgba(229,9,20,0), rgba(229,9,20,.82), rgba(229,9,20,0));
   box-shadow:none;
 }
 
 .section-line{
-  width:100%;
-  height:1px;
-  margin:22px 0;
+  width:min(100%, 260px);
+  margin:22px auto;
 }
 
 .game-title{
@@ -484,7 +492,7 @@ header.scrolled{
   display:block;
   position:relative;
   z-index:2;
-  border:2px solid rgba(229,9,20,.85);
+  border:none;
   box-shadow:0 12px 26px rgba(0,0,0,.38);
 }
 
@@ -550,9 +558,9 @@ header.scrolled{
 }
 
 .discord-divider{
-  width:100%;
-  height:1px;
-  margin:18px 0;
+  width:min(100%, 260px);
+  height:2px;
+  margin:18px auto;
   opacity:0;
   display:none;
 }
@@ -571,8 +579,8 @@ header.scrolled{
   text-align:center;
   font-size:clamp(13px, 2.5vw, 15px);
   color:#f1f1f1;
-  margin:14px 0 0;
-  padding:4px 8px 0;
+  margin:18px 0 0;
+  padding:0 8px;
   min-height:0;
   border-radius:0;
   background:transparent;
@@ -617,6 +625,7 @@ header.scrolled{
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
   box-shadow:0 10px 25px rgba(0,0,0,.28);
+  margin-top:18px;
 }
 
 .spotify-header{
@@ -741,7 +750,7 @@ header.scrolled{
 }
 
 .section-divider{
-  width:110px;
+  width:112px;
   height:2px;
   margin:34px auto 26px;
 }
@@ -807,10 +816,10 @@ header.scrolled{
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
   text-align:center;
-  padding:30px 16px 34px;
+  padding:24px 16px 28px;
   margin-top:18px;
   color:#fff;
-  background:linear-gradient(to bottom, rgba(0,0,0,.48), rgba(0,0,0,.86));
+  background:linear-gradient(to bottom, rgba(0,0,0,.48), rgba(0,0,0,.82));
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
   border-top:1px solid rgba(255,255,255,.07);
@@ -818,10 +827,10 @@ header.scrolled{
 }
 
 .site-footer p{
-  font-size:clamp(20px, 5vw, 34px);
-  font-weight:850;
-  line-height:1.25;
-  letter-spacing:.6px;
+  font-size:clamp(13px, 2.5vw, 15px);
+  font-weight:750;
+  line-height:1.35;
+  letter-spacing:.45px;
   color:#fff;
   opacity:.98;
 }
@@ -1009,10 +1018,10 @@ header.scrolled{
   }
 
   .site-footer{
-    padding:28px 12px 32px;
+    padding:22px 12px 26px;
   }
 
   .site-footer p{
-    font-size:clamp(21px, 6vw, 28px);
+    font-size:14px;
   }
 }
