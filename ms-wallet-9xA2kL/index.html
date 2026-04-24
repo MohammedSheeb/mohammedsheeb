@@ -74,6 +74,7 @@
       border-radius:999px;
       padding:5px;
       flex-shrink:0;
+      overflow:hidden;
     }
 
     .lang-btn{
@@ -84,9 +85,14 @@
       background:transparent;
       color:#aaa;
       font-size:13px;
-      font-weight:700;
+      font-weight:800;
       cursor:pointer;
       text-align:center;
+      transition:background .22s ease, color .22s ease, transform .12s ease;
+    }
+
+    .lang-btn:active{
+      transform:scale(.94);
     }
 
     .lang-btn.active{
@@ -318,7 +324,7 @@
 
       <div class="lang-switch" aria-label="Language switcher">
         <button class="lang-btn" type="button" data-lang="en">EN</button>
-        <button class="lang-btn" type="button" data-lang="ar">عربي</button>
+        <button class="lang-btn" type="button" data-lang="ar">AR</button>
       </div>
     </div>
   </header>
@@ -417,18 +423,15 @@
       document.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.lang === selected);
       });
-
-      localStorage.setItem("walletLang", selected);
     }
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const savedLang = localStorage.getItem("walletLang");
     const deviceLang = navigator.language && navigator.language.toLowerCase().startsWith("ar")
       ? "ar"
       : "en";
 
-    setLanguage(savedLang || deviceLang);
+    setLanguage(deviceLang);
 
     document.querySelectorAll(".lang-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
