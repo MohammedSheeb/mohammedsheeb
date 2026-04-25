@@ -158,6 +158,34 @@
       color:#111;
     }
 
+    .wallet-id-box{
+      margin-bottom:28px;
+      padding:12px 18px;
+      border-radius:16px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
+      direction:ltr !important;
+    }
+
+    .wallet-id-label{
+      display:block;
+      color:#777;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .wallet-id-value{
+      display:block;
+      color:#111;
+      font-size:18px;
+      font-weight:850;
+      letter-spacing:.04em;
+      margin-top:2px;
+    }
+
     .wallet-info{
       font-size:clamp(1.22rem, 5vw, 1.8rem);
       line-height:1.35;
@@ -328,9 +356,9 @@
       }
 
       .wallet-info{
-  min-height:0;
-  margin-bottom:34px;
-}
+        min-height:0;
+        margin-bottom:34px;
+      }
 
       .wallet-text{
         min-height:110px;
@@ -380,6 +408,11 @@
     <div class="wallet-icon">💳</div>
 
     <h1 class="wallet-title" data-i18n="title">Lost Wallet</h1>
+
+    <div class="wallet-id-box">
+      <span class="wallet-id-label">Wallet ID</span>
+      <span class="wallet-id-value" id="walletId">ms-wallet-00000000</span>
+    </div>
 
     <div class="wallet-info">
       <span data-i18n="ownerLabel">Owner</span>:
@@ -474,7 +507,41 @@
       });
     }
 
+    function generateWalletId() {
+      const number = Math.floor(10000000 + Math.random() * 90000000);
+      return "ms-wallet-" + number;
+    }
+
+    function getWalletId() {
+      const sixHours = 6 * 60 * 60 * 1000;
+      const now = Date.now();
+
+      const savedData = JSON.parse(localStorage.getItem("walletSession"));
+
+      if (savedData && savedData.id && savedData.expiresAt && now < savedData.expiresAt) {
+        return savedData.id;
+      }
+
+      const newWalletId = generateWalletId();
+
+      const newData = {
+        id: newWalletId,
+        createdAt: now,
+        expiresAt: now + sixHours
+      };
+
+      localStorage.setItem("walletSession", JSON.stringify(newData));
+
+      return newWalletId;
+    }
+
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const walletId = getWalletId();
+    document.getElementById("walletId").textContent = walletId;
+
+    const cleanUrl = window.location.origin + "/" + walletId;
+    window.history.replaceState({}, "", cleanUrl);
 
     const deviceLang = navigator.language && navigator.language.toLowerCase().startsWith("ar")
       ? "ar"
