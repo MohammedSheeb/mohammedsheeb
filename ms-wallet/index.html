@@ -328,9 +328,9 @@
       }
 
       .wallet-info{
-        min-height:0;
-        margin-bottom:34px;
-      }
+  min-height:0;
+  margin-bottom:34px;
+}
 
       .wallet-text{
         min-height:110px;
@@ -365,7 +365,7 @@
 <body>
   <header>
     <div class="header-inner">
-      <a href="/ms-wallet/" aria-label="Lost Wallet Page">
+      <a href="./" aria-label="Lost Wallet Page">
         <img src="/assets/images/logos/Logo.svg" alt="Mohammed Sheeb Logo" class="logo-img" />
       </a>
 
@@ -487,53 +487,6 @@
         setLanguage(btn.dataset.lang);
       });
     });
-
-    const WALLET_ID_KEY = "ms_wallet_visitor_id";
-    const WALLET_EXPIRE_KEY = "ms_wallet_visitor_expire";
-    const WALLET_DURATION = 5 * 60 * 1000;
-
-    function createWalletId() {
-      const numbers = Math.floor(10000000 + Math.random() * 90000000);
-      return String(numbers);
-    }
-
-    function getWalletId() {
-      const now = Date.now();
-      const savedId = localStorage.getItem(WALLET_ID_KEY);
-      const savedExpire = Number(localStorage.getItem(WALLET_EXPIRE_KEY));
-
-      if (savedId && savedExpire && now < savedExpire) {
-        return savedId;
-      }
-
-      const newId = createWalletId();
-      const newExpire = now + WALLET_DURATION;
-
-      localStorage.setItem(WALLET_ID_KEY, newId);
-      localStorage.setItem(WALLET_EXPIRE_KEY, String(newExpire));
-
-      return newId;
-    }
-
-    function cleanWalletPath(pathname) {
-      if (pathname.startsWith("/ms-wallet/")) {
-        return "/ms-wallet/";
-      }
-
-      return "/ms-wallet/";
-    }
-
-    function updateWalletUrl() {
-      const walletId = getWalletId();
-      const newPath = cleanWalletPath(window.location.pathname) + walletId + "/";
-      const newUrl = newPath + window.location.search + window.location.hash;
-
-      if (window.location.pathname !== newPath) {
-        window.history.replaceState(null, "", newUrl);
-      }
-    }
-
-    updateWalletUrl();
   </script>
 </body>
 </html>
