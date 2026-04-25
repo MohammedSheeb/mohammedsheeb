@@ -494,7 +494,7 @@
 
     function createWalletId() {
       const numbers = Math.floor(10000000 + Math.random() * 90000000);
-      return "ms-wallet-" + numbers;
+      return String(numbers);
     }
 
     function getWalletId() {
